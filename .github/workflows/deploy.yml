@@ -25,5 +25,12 @@ jobs:
         aws s3 sync . s3://web-nails --delete --acl public-read
     - name: Test S3 access
       run: aws s3 ls s3://web-nails --region ap-south-1
+    - name: Sync files to S3
+      run: |
+        echo "Checking bucket access..."
+        aws s3 ls s3://web-nails --region ap-south-1
+        echo "Syncing files..."
+        aws s3 sync . s3://web-nails --exclude ".git/*" --delete --acl public-read --region ap-south-1
+
 
 
