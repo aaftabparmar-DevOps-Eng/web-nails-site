@@ -23,4 +23,7 @@ jobs:
     - name: Sync files to S3
       run: |
         aws s3 sync . s3://web-nails --delete --acl public-read
+    - name: Test S3 access
+      run: aws s3 ls s3://web-nails --region ap-south-1
+
 
