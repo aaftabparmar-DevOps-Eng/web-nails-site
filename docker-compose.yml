@@ -1,0 +1,7 @@
+services:
+  web-nails-site:
+    build: .
+    container_name: web-nails-site
+    ports:
+      - "8081:80"
+    restart: unless-stopped
