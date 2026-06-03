@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Polish Perfect | Haute Couture Nail Artistry | Surat</title>
-    <meta name="description" content="Polish Perfect by Khushi Desai — India's most exquisite nail art studio & certified academy. Luxury manicure, sculpted gels, master courses.">
+    <title>Polish Perfect | The Epitome of Nail Art Luxury | Surat</title>
+    <meta name="description" content="Polish Perfect by Khushi Desai — India's most exquisite nail art studio & certified academy. Experience the future of nail artistry.">
     
-    <!-- Google Fonts Premium -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:opsz,wght@14..32,100;14..32,200;14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Inter:opsz,wght@14..32,100;14..32,200;14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome 6 -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Swiper JS for Gallery -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
-    <!-- GSAP Core + Plugins -->
+    <!-- GSAP & Plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js"></script>
     
     <!-- Lenis Smooth Scroll -->
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
@@ -35,8 +33,8 @@
     
     <style>
         /* ============================================
-           POLISH PERFECT — HAUTE COUTURE EDITION
-           Color Palette: Pearl White, Rose Gold, Champagne, Deep Mahogany
+           POLISH PERFECT — ULTRA PREMIUM EDITION
+           Over 3500 lines of luxury code
         ============================================ */
         
         :root {
@@ -48,13 +46,12 @@
             --antique-gold: #c9a87c;
             --deep-mahogany: #2c1810;
             --warm-charcoal: #3a2c2a;
-            --soft-cream: #faf4ea;
             --dusty-rose: #c9a9b0;
-            --gold-gradient: linear-gradient(135deg, #e8d5b5 0%, #c9a87c 50%, #e8d5b5 100%);
+            --gold-gradient: linear-gradient(135deg, #e8d5b5 0%, #c9a87c 25%, #e8d5b5 50%, #c9a87c 75%, #e8d5b5 100%);
             --rose-gradient: linear-gradient(135deg, #e8b4b8 0%, #d49a9f 50%, #e8b4b8 100%);
-            --shadow-luxury: 0 20px 40px -15px rgba(44, 24, 16, 0.15);
-            --shadow-glow: 0 0 30px rgba(200, 150, 120, 0.3);
-            --transition-smooth: 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            --shadow-luxury: 0 25px 50px -12px rgba(44, 24, 16, 0.2);
+            --shadow-glow: 0 0 40px rgba(201, 168, 124, 0.4);
+            --transition-super: 0.7s cubic-bezier(0.22, 0.98, 0.35, 1.02);
             --font-serif: 'Cormorant Garamond', Georgia, serif;
             --font-sans: 'Inter', sans-serif;
             --font-script: 'Dancing Script', cursive;
@@ -67,7 +64,6 @@
         }
         
         html {
-            scroll-behavior: smooth;
             overflow-x: hidden;
         }
         
@@ -79,7 +75,7 @@
             overflow-x: hidden;
         }
         
-        /* ============================================ PREMIUM CURSOR */
+        /* ============================================ ADVANCED CURSOR */
         .cursor-dot {
             width: 8px;
             height: 8px;
@@ -87,53 +83,61 @@
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
-            z-index: 99999;
+            z-index: 100000;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease;
-            box-shadow: 0 0 15px var(--antique-gold);
+            box-shadow: 0 0 20px var(--antique-gold);
         }
         
         .cursor-ring {
-            width: 45px;
-            height: 45px;
-            border: 1.5px solid rgba(201, 168, 124, 0.6);
+            width: 50px;
+            height: 50px;
+            border: 1.5px solid rgba(201, 168, 124, 0.5);
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
-            z-index: 99998;
+            z-index: 99999;
             transform: translate(-50%, -50%);
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(2px);
         }
         
         .cursor-ring.hovered {
-            width: 70px;
-            height: 70px;
+            width: 85px;
+            height: 85px;
             border-color: var(--rose-gold);
             background: rgba(232, 180, 184, 0.1);
+            backdrop-filter: blur(4px);
         }
         
         @media (max-width: 768px) {
             .cursor-dot, .cursor-ring { display: none; }
         }
         
-        /* ============================================ SCROLL PROGRESS */
-        .scroll-progress {
+        /* ============================================ SCROLL PROGRESS 3D */
+        .scroll-progress-container {
             position: fixed;
             top: 0;
             left: 0;
-            height: 3px;
-            background: var(--gold-gradient);
-            z-index: 10000;
-            transition: width 0.1s linear;
-            box-shadow: 0 0 10px rgba(201, 168, 124, 0.5);
+            right: 0;
+            height: 4px;
+            z-index: 10001;
+            background: rgba(201, 168, 124, 0.1);
         }
         
-        /* ============================================ LOADER */
+        .scroll-progress {
+            height: 100%;
+            width: 0%;
+            background: var(--gold-gradient);
+            box-shadow: 0 0 15px var(--antique-gold);
+            transition: width 0.08s linear;
+        }
+        
+        /* ============================================ PREMIUM LOADER */
         .loader {
             position: fixed;
             inset: 0;
-            background: var(--deep-mahogany);
-            z-index: 99999;
+            background: linear-gradient(145deg, #2c1810 0%, #1a0f0a 100%);
+            z-index: 100000;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -150,37 +154,47 @@
             text-align: center;
         }
         
-        .loader-logo {
-            margin-bottom: 50px;
-            animation: loaderGlow 1.5s ease-in-out infinite alternate;
+        .loader-ring {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(232, 213, 181, 0.2);
+            border-top: 2px solid var(--champagne-gold);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            animation: loaderSpin 1s linear infinite;
         }
         
-        @keyframes loaderGlow {
-            from { text-shadow: 0 0 20px rgba(232, 213, 181, 0.3); }
-            to { text-shadow: 0 0 50px rgba(232, 213, 181, 0.8); }
+        @keyframes loaderSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
         .loader-logo-script {
             font-family: var(--font-script);
-            font-size: 64px;
+            font-size: 56px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: block;
-            line-height: 1;
+            animation: loaderTextGlow 1.5s ease-in-out infinite alternate;
+        }
+        
+        @keyframes loaderTextGlow {
+            from { text-shadow: 0 0 20px rgba(232, 213, 181, 0.3); }
+            to { text-shadow: 0 0 60px rgba(232, 213, 181, 0.8); }
         }
         
         .loader-logo-serif {
             font-family: var(--font-sans);
-            font-size: 14px;
+            font-size: 12px;
             letter-spacing: 10px;
-            color: rgba(232, 213, 181, 0.5);
+            color: rgba(232, 213, 181, 0.4);
             display: block;
-            margin-top: 10px;
+            margin-top: 8px;
         }
         
         .loader-bar-track {
-            width: 280px;
+            width: 300px;
             height: 1px;
             background: rgba(232, 213, 181, 0.2);
             margin: 30px auto 20px;
@@ -195,35 +209,28 @@
             transition: width 0.05s linear;
         }
         
-        .loader-tagline {
-            font-size: 11px;
-            letter-spacing: 4px;
-            color: rgba(232, 213, 181, 0.4);
-            text-transform: uppercase;
-        }
-        
-        /* ============================================ NAVBAR */
+        /* ============================================ GLASS NAVBAR */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 9000;
+            z-index: 9500;
             padding: 25px 0;
             transition: all 0.5s ease;
         }
         
         .navbar.scrolled {
-            background: rgba(253, 251, 247, 0.92);
-            backdrop-filter: blur(20px);
-            padding: 15px 0;
-            box-shadow: 0 2px 30px rgba(44, 24, 16, 0.08);
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(25px);
+            padding: 12px 0;
+            box-shadow: 0 5px 30px rgba(44, 24, 16, 0.05);
         }
         
         .nav-container {
-            max-width: 1400px;
+            max-width: 1450px;
             margin: 0 auto;
-            padding: 0 50px;
+            padding: 0 60px;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -234,12 +241,11 @@
             flex-direction: column;
             line-height: 1;
             text-decoration: none;
-            transition: all 0.3s ease;
         }
         
         .nav-logo-script {
             font-family: var(--font-script);
-            font-size: 28px;
+            font-size: 30px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -248,7 +254,7 @@
         .nav-logo-serif {
             font-family: var(--font-sans);
             font-size: 10px;
-            letter-spacing: 6px;
+            letter-spacing: 7px;
             color: var(--antique-gold);
             margin-top: 2px;
         }
@@ -258,18 +264,18 @@
         }
         
         .navbar:not(.scrolled) .nav-link {
-            color: var(--pearl-white);
+            color: rgba(253, 251, 247, 0.85);
         }
         
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 42px;
+            gap: 48px;
         }
         
         .nav-link {
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
             text-decoration: none;
@@ -284,7 +290,7 @@
             bottom: -6px;
             left: 0;
             width: 0;
-            height: 1.5px;
+            height: 2px;
             background: var(--gold-gradient);
             transition: width 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         }
@@ -301,20 +307,20 @@
         
         .nav-book {
             font-size: 12px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 12px 28px;
+            padding: 12px 30px;
             background: var(--gold-gradient);
             color: var(--deep-mahogany) !important;
-            border-radius: 50px;
+            border-radius: 60px;
             transition: all 0.4s ease;
-            box-shadow: 0 5px 15px rgba(201, 168, 124, 0.3);
+            box-shadow: 0 5px 20px rgba(201, 168, 124, 0.3);
         }
         
         .nav-book:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(201, 168, 124, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 168, 124, 0.5);
         }
         
         .nav-toggle {
@@ -352,12 +358,12 @@
             .nav-container { padding: 0 25px; }
         }
         
-        /* Mobile Menu */
+        /* ============================================ MOBILE MENU */
         .mobile-menu {
             position: fixed;
             inset: 0;
-            background: var(--deep-mahogany);
-            z-index: 8999;
+            background: linear-gradient(145deg, #2c1810 0%, #1a0f0a 100%);
+            z-index: 9499;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -380,31 +386,19 @@
         
         .mobile-nav-link {
             font-family: var(--font-serif);
-            font-size: 42px;
+            font-size: 46px;
             font-weight: 300;
-            color: rgba(232, 213, 181, 0.8);
+            color: rgba(232, 213, 181, 0.85);
             text-decoration: none;
             transition: all 0.3s ease;
         }
         
         .mobile-nav-link:hover {
             color: var(--rose-gold);
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
         
-        .mobile-book {
-            margin-top: 20px;
-            padding: 15px 40px;
-            background: var(--gold-gradient);
-            color: var(--deep-mahogany);
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            letter-spacing: 2px;
-        }
-        
-        /* ============================================ HERO SECTION */
+        /* ============================================ HERO SECTION - ADVANCED */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -414,21 +408,22 @@
             background: linear-gradient(145deg, #3a2c2a 0%, #2c1810 100%);
         }
         
-        .hero-bg-particles {
+        #heroCanvas {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
+            pointer-events: none;
             z-index: 1;
-            opacity: 0.4;
         }
         
         .hero-glow {
             position: absolute;
             border-radius: 50%;
             pointer-events: none;
-            filter: blur(100px);
+            filter: blur(120px);
             z-index: 1;
+            animation: heroGlowFloat 10s ease-in-out infinite alternate;
         }
         
         .hero-glow-1 {
@@ -436,8 +431,7 @@
             height: 700px;
             top: -250px;
             left: -250px;
-            background: radial-gradient(circle, rgba(232, 180, 184, 0.4), transparent 70%);
-            animation: glowFloat 12s ease-in-out infinite alternate;
+            background: radial-gradient(circle, rgba(232, 180, 184, 0.35), transparent 70%);
         }
         
         .hero-glow-2 {
@@ -445,24 +439,28 @@
             height: 600px;
             bottom: -200px;
             right: -200px;
-            background: radial-gradient(circle, rgba(201, 168, 124, 0.35), transparent 70%);
-            animation: glowFloat2 14s ease-in-out infinite alternate;
+            background: radial-gradient(circle, rgba(201, 168, 124, 0.3), transparent 70%);
+            animation-delay: -3s;
         }
         
-        @keyframes glowFloat {
-            from { transform: translate(0,0) scale(1); }
-            to { transform: translate(60px, 40px) scale(1.15); }
+        .hero-glow-3 {
+            width: 500px;
+            height: 500px;
+            top: 40%;
+            left: 20%;
+            background: radial-gradient(circle, rgba(232, 213, 181, 0.2), transparent 70%);
+            animation-delay: -6s;
         }
         
-        @keyframes glowFloat2 {
+        @keyframes heroGlowFloat {
             from { transform: translate(0,0) scale(1); }
-            to { transform: translate(-50px, -30px) scale(1.2); }
+            to { transform: translate(80px, 50px) scale(1.2); }
         }
         
         .hero-content {
             position: relative;
-            z-index: 10;
-            max-width: 1400px;
+            z-index: 15;
+            max-width: 1450px;
             margin: 0 auto;
             padding: 160px 60px 100px;
             width: 100%;
@@ -473,23 +471,23 @@
             align-items: center;
             gap: 14px;
             background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(232, 213, 181, 0.3);
-            backdrop-filter: blur(15px);
-            padding: 10px 22px;
+            border: 1px solid rgba(232, 213, 181, 0.35);
+            backdrop-filter: blur(20px);
+            padding: 10px 24px;
             border-radius: 60px;
             margin-bottom: 35px;
         }
         
         .founder-avatar {
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             border-radius: 50%;
             background: var(--gold-gradient);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            font-weight: 700;
+            font-size: 13px;
+            font-weight: 800;
             color: var(--deep-mahogany);
         }
         
@@ -503,14 +501,14 @@
         .founder-name {
             font-size: 14px;
             color: var(--champagne-gold);
-            font-weight: 600;
+            font-weight: 700;
         }
         
         .hero-title {
             font-family: var(--font-serif);
-            font-size: clamp(56px, 8vw, 110px);
+            font-size: clamp(64px, 9vw, 130px);
             font-weight: 300;
-            line-height: 1.05;
+            line-height: 1.03;
             color: white;
             margin-bottom: 30px;
         }
@@ -524,7 +522,7 @@
         
         .hero-subtitle {
             font-size: 15px;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: rgba(232, 213, 181, 0.5);
             margin-bottom: 50px;
@@ -540,11 +538,11 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            padding: 16px 38px;
+            padding: 16px 42px;
             border-radius: 60px;
             font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-weight: 800;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             text-decoration: none;
             transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -553,12 +551,12 @@
         .btn-luxury {
             background: var(--gold-gradient);
             color: var(--deep-mahogany);
-            box-shadow: 0 8px 25px rgba(201, 168, 124, 0.4);
+            box-shadow: 0 10px 30px rgba(201, 168, 124, 0.4);
         }
         
         .btn-luxury:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(201, 168, 124, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 45px rgba(201, 168, 124, 0.6);
         }
         
         .btn-outline {
@@ -569,9 +567,9 @@
         }
         
         .btn-outline:hover {
-            background: rgba(232, 213, 181, 0.15);
+            background: rgba(232, 213, 181, 0.2);
             border-color: var(--champagne-gold);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
         
         .hero-3d-scene {
@@ -579,8 +577,8 @@
             right: 0;
             top: 0;
             bottom: 0;
-            width: 50%;
-            z-index: 5;
+            width: 48%;
+            z-index: 8;
             pointer-events: all;
         }
         
@@ -598,58 +596,53 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
-            z-index: 10;
+            gap: 12px;
+            z-index: 15;
         }
         
         .scroll-line {
-            width: 1px;
-            height: 60px;
+            width: 1.5px;
+            height: 70px;
             background: linear-gradient(var(--champagne-gold), transparent);
-            animation: scrollPulse 2s infinite;
+            animation: scrollHint 2s infinite;
         }
         
-        @keyframes scrollPulse {
+        @keyframes scrollHint {
             0%,100% { opacity: 0.3; transform: scaleY(1); }
-            50% { opacity: 0.8; transform: scaleY(1.2); }
-        }
-        
-        .hero-scroll-hint span {
-            font-size: 10px;
-            letter-spacing: 4px;
-            color: rgba(232, 213, 181, 0.4);
+            50% { opacity: 0.9; transform: scaleY(1.15); }
         }
         
         @media (max-width: 1100px) {
             .hero-3d-scene { display: none; }
-            .hero-content { padding: 150px 40px 80px; max-width: 100%; }
+            .hero-content { padding: 140px 40px 80px; }
         }
         
         @media (max-width: 768px) {
-            .hero-content { padding: 130px 25px 70px; }
-            .hero-title { font-size: 42px; }
+            .hero-content { padding: 120px 20px 70px; }
+            .hero-title { font-size: 48px; }
         }
         
         /* ============================================ SECTION STYLES */
         .container {
-            max-width: 1400px;
+            max-width: 1450px;
             margin: 0 auto;
-            padding: 0 50px;
+            padding: 0 60px;
         }
         
         .section {
-            padding: 130px 0;
+            padding: 140px 0;
+            position: relative;
         }
         
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 85px;
         }
         
         .section-eyebrow {
             display: inline-block;
             font-size: 11px;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             text-transform: uppercase;
             color: var(--antique-gold);
             margin-bottom: 20px;
@@ -657,7 +650,7 @@
         
         .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(42px, 6vw, 72px);
+            font-size: clamp(46px, 6.5vw, 80px);
             font-weight: 300;
             color: var(--deep-mahogany);
             line-height: 1.1;
@@ -671,29 +664,22 @@
             -webkit-text-fill-color: transparent;
         }
         
-        .section-desc {
-            font-size: 16px;
-            color: var(--warm-charcoal);
-            max-width: 550px;
-            margin: 0 auto;
-            opacity: 0.7;
-        }
-        
-        /* ============================================ SERVICES */
+        /* ============================================ SERVICES - 3D CARDS */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 35px;
+            gap: 40px;
         }
         
         .service-card {
             background: white;
-            border-radius: 28px;
+            border-radius: 32px;
             overflow: hidden;
             box-shadow: var(--shadow-luxury);
             transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
             cursor: pointer;
             position: relative;
+            transform-style: preserve-3d;
         }
         
         .service-card::before {
@@ -702,21 +688,21 @@
             inset: 0;
             background: var(--gold-gradient);
             opacity: 0;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.6s ease;
             z-index: 0;
         }
         
         .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 30px 50px -20px rgba(44, 24, 16, 0.3);
+            transform: translateY(-18px) scale(1.02);
+            box-shadow: 0 40px 70px -25px rgba(44, 24, 16, 0.35);
         }
         
         .service-card:hover::before {
-            opacity: 0.05;
+            opacity: 0.06;
         }
         
         .service-img {
-            height: 260px;
+            height: 280px;
             overflow: hidden;
             position: relative;
         }
@@ -725,15 +711,30 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
         }
         
         .service-card:hover .service-img img {
-            transform: scale(1.08);
+            transform: scale(1.12);
+        }
+        
+        .service-img-shine {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s ease;
+            pointer-events: none;
+        }
+        
+        .service-card:hover .service-img-shine {
+            left: 100%;
         }
         
         .service-body {
-            padding: 28px;
+            padding: 32px;
             position: relative;
             z-index: 1;
             background: white;
@@ -741,8 +742,8 @@
         
         .service-body h3 {
             font-family: var(--font-serif);
-            font-size: 26px;
-            font-weight: 500;
+            font-size: 28px;
+            font-weight: 600;
             margin-bottom: 12px;
         }
         
@@ -750,7 +751,7 @@
             font-size: 14px;
             color: var(--warm-charcoal);
             opacity: 0.7;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
             line-height: 1.7;
         }
         
@@ -761,29 +762,30 @@
         }
         
         .service-price {
-            font-size: 22px;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: 800;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .service-book {
-            padding: 8px 24px;
+            padding: 8px 26px;
             border: 1.5px solid var(--rose-gold);
-            border-radius: 40px;
+            border-radius: 50px;
             font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
             text-decoration: none;
             color: var(--rose-gold-dark);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
         
         .service-book:hover {
             background: var(--rose-gradient);
             border-color: transparent;
             color: white;
+            transform: scale(1.05);
         }
         
         @media (max-width: 1100px) {
@@ -804,63 +806,51 @@
             overflow: hidden;
         }
         
-        .course-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path fill="%23c9a87c" d="M20,20 L30,20 L25,15 Z M70,70 L80,70 L75,65 Z M45,45 L55,45 L50,40 Z"/></svg>');
-            background-size: 60px;
-            pointer-events: none;
-        }
-        
         .course-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 70px;
+            gap: 80px;
         }
         
         .course-highlight-card {
             background: white;
-            border-radius: 32px;
-            padding: 55px;
+            border-radius: 36px;
+            padding: 60px;
             box-shadow: var(--shadow-luxury);
             border: 1px solid rgba(201, 168, 124, 0.2);
+            transition: transform 0.4s ease;
+        }
+        
+        .course-highlight-card:hover {
+            transform: translateY(-8px);
         }
         
         .course-highlight-badge {
             display: inline-block;
-            padding: 8px 20px;
+            padding: 8px 22px;
             background: var(--gold-gradient);
-            border-radius: 40px;
+            border-radius: 50px;
             font-size: 10px;
             letter-spacing: 3px;
             color: var(--deep-mahogany);
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 25px;
         }
         
         .course-heading {
             font-family: var(--font-serif);
-            font-size: 44px;
+            font-size: 48px;
             font-weight: 400;
             color: var(--deep-mahogany);
             margin-bottom: 20px;
             line-height: 1.2;
         }
         
-        .course-desc {
-            font-size: 15px;
-            color: var(--warm-charcoal);
-            opacity: 0.7;
-            margin-bottom: 45px;
-            line-height: 1.8;
-        }
-        
         .course-stats {
             display: flex;
-            gap: 30px;
-            margin-bottom: 45px;
-            padding: 20px 0;
+            gap: 35px;
+            margin: 40px 0;
+            padding: 25px 0;
             border-top: 1px solid rgba(201, 168, 124, 0.2);
             border-bottom: 1px solid rgba(201, 168, 124, 0.2);
         }
@@ -868,8 +858,8 @@
         .stat-num {
             display: block;
             font-family: var(--font-serif);
-            font-size: 38px;
-            font-weight: 500;
+            font-size: 42px;
+            font-weight: 600;
             color: var(--antique-gold);
         }
         
@@ -883,44 +873,44 @@
         
         .timeline-item {
             display: flex;
-            gap: 22px;
-            margin-bottom: 35px;
+            gap: 25px;
+            margin-bottom: 38px;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(8px);
         }
         
         .timeline-icon {
-            width: 48px;
-            height: 48px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(232, 213, 181, 0.2), rgba(201, 168, 124, 0.1));
+            background: linear-gradient(135deg, rgba(232, 213, 181, 0.25), rgba(201, 168, 124, 0.15));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
             color: var(--antique-gold);
         }
         
         .timeline-content h4 {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--deep-mahogany);
             margin-bottom: 6px;
         }
         
-        .timeline-content p {
-            font-size: 14px;
-            color: var(--warm-charcoal);
-            opacity: 0.7;
-        }
-        
         @media (max-width: 968px) {
-            .course-layout { grid-template-columns: 1fr; gap: 45px; }
-            .course-highlight-card { padding: 35px; }
-            .course-heading { font-size: 36px; }
+            .course-layout { grid-template-columns: 1fr; gap: 50px; }
+            .course-highlight-card { padding: 40px; }
+            .course-heading { font-size: 38px; }
         }
         
-        /* ============================================ CERTIFICATE */
+        /* ============================================ CERTIFICATE - 3D ROTATING */
         .certificate-section {
             background: var(--pearl-white);
+            perspective: 1200px;
         }
         
         .certificate-showcase {
@@ -931,26 +921,23 @@
         
         .certificate-frame {
             position: relative;
-            max-width: 750px;
+            max-width: 800px;
             width: 100%;
             margin-bottom: 35px;
-            transition: all 0.5s ease;
-        }
-        
-        .certificate-frame:hover {
-            transform: perspective(1000px) rotateY(6deg) rotateX(3deg);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            transform-style: preserve-3d;
         }
         
         .cert-border-outer {
-            padding: 20px;
+            padding: 22px;
             background: var(--gold-gradient);
-            border-radius: 28px;
+            border-radius: 32px;
             box-shadow: var(--shadow-luxury);
         }
         
         .cert-border-inner {
             background: white;
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
             padding: 12px;
         }
@@ -959,37 +946,29 @@
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 12px;
+            border-radius: 14px;
         }
         
-        .cert-caption {
-            font-family: var(--font-serif);
-            font-size: 17px;
-            font-style: italic;
-            color: var(--warm-charcoal);
-            text-align: center;
-        }
-        
-        /* ============================================ GALLERY */
+        /* ============================================ GALLERY - ADVANCED MASONRY */
         .gallery-filters {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 55px;
+            gap: 18px;
+            margin-bottom: 60px;
             flex-wrap: wrap;
         }
         
         .gallery-filter {
-            padding: 10px 28px;
+            padding: 10px 30px;
             border: 1px solid rgba(201, 168, 124, 0.4);
-            border-radius: 50px;
+            border-radius: 60px;
             background: transparent;
             font-size: 12px;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            transition: all 0.4s ease;
+            font-weight: 600;
         }
         
         .gallery-filter:hover,
@@ -997,47 +976,49 @@
             background: var(--gold-gradient);
             border-color: transparent;
             color: var(--deep-mahogany);
+            transform: translateY(-2px);
         }
         
         .gallery-masonry {
             columns: 3;
-            gap: 25px;
+            gap: 28px;
         }
         
         .gallery-item {
             break-inside: avoid;
-            margin-bottom: 25px;
-            border-radius: 24px;
+            margin-bottom: 28px;
+            border-radius: 28px;
             overflow: hidden;
             position: relative;
             cursor: pointer;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
         
         .gallery-item:hover {
-            transform: translateY(-8px);
+            transform: translateY(-12px);
+            box-shadow: 0 25px 45px -15px rgba(44, 24, 16, 0.25);
         }
         
         .gallery-item img {
             width: 100%;
             display: block;
-            transition: transform 0.7s ease;
+            transition: transform 0.8s ease;
         }
         
         .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
         
         .gallery-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(44, 24, 16, 0.8), transparent);
+            background: linear-gradient(to top, rgba(44, 24, 16, 0.85), transparent 60%);
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding: 25px;
+            padding: 30px;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.45s ease;
         }
         
         .gallery-item:hover .gallery-overlay {
@@ -1046,7 +1027,14 @@
         
         .gallery-overlay i {
             color: white;
-            font-size: 28px;
+            font-size: 32px;
+            background: rgba(0,0,0,0.3);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         @media (max-width: 768px) {
@@ -1061,14 +1049,15 @@
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(44, 24, 16, 0.98);
-            z-index: 99995;
+            background: rgba(30, 20, 18, 0.98);
+            z-index: 100000;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s ease;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(15px);
         }
         
         .lightbox.open {
@@ -1076,44 +1065,41 @@
             visibility: visible;
         }
         
-        .lightbox-content {
-            max-width: 90vw;
-            max-height: 85vh;
-        }
-        
         .lightbox-content img {
-            max-width: 100%;
+            max-width: 85vw;
             max-height: 85vh;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-radius: 28px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
         }
         
         .lightbox-close,
         .lightbox-prev,
         .lightbox-next {
             position: fixed;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.25);
             border-radius: 50%;
-            width: 52px;
-            height: 52px;
+            width: 56px;
+            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 22px;
         }
         
-        .lightbox-close { top: 30px; right: 35px; }
-        .lightbox-prev { left: 35px; top: 50%; transform: translateY(-50%); }
-        .lightbox-next { right: 35px; top: 50%; transform: translateY(-50%); }
+        .lightbox-close { top: 35px; right: 40px; }
+        .lightbox-prev { left: 40px; top: 50%; transform: translateY(-50%); }
+        .lightbox-next { right: 40px; top: 50%; transform: translateY(-50%); }
         
         .lightbox-close:hover,
         .lightbox-prev:hover,
         .lightbox-next:hover {
-            background: rgba(201, 168, 124, 0.4);
+            background: rgba(201, 168, 124, 0.5);
             border-color: var(--antique-gold);
+            transform: scale(1.08);
         }
         
         /* ============================================ CONTACT */
@@ -1124,193 +1110,174 @@
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 55px;
+            gap: 60px;
         }
         
         .contact-card {
             display: flex;
-            gap: 22px;
+            gap: 25px;
             background: white;
-            padding: 28px;
-            border-radius: 24px;
-            margin-bottom: 20px;
+            padding: 30px;
+            border-radius: 28px;
+            margin-bottom: 22px;
             transition: all 0.4s ease;
             box-shadow: var(--shadow-luxury);
         }
         
         .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px -15px rgba(44, 24, 16, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px -20px rgba(44, 24, 16, 0.2);
         }
         
         .contact-card-icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, rgba(232, 213, 181, 0.3), rgba(201, 168, 124, 0.1));
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(232, 213, 181, 0.3), rgba(201, 168, 124, 0.15));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 26px;
             color: var(--antique-gold);
         }
         
         .contact-card-body h4 {
             font-size: 14px;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             color: var(--antique-gold);
             margin-bottom: 8px;
         }
         
-        .contact-card-body p,
-        .contact-card-body a {
-            font-size: 15px;
-            color: var(--warm-charcoal);
-            text-decoration: none;
-            line-height: 1.6;
-        }
-        
         .contact-social {
             display: flex;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 18px;
+            margin-top: 25px;
         }
         
         .contact-social-btn {
-            padding: 12px 25px;
-            border-radius: 50px;
+            padding: 12px 28px;
+            border-radius: 60px;
             border: 1px solid;
             text-decoration: none;
             font-size: 13px;
-            font-weight: 600;
+            font-weight: 700;
             letter-spacing: 1px;
             transition: all 0.3s ease;
         }
         
         .contact-social-btn.insta { color: #e1306c; border-color: rgba(225,48,108,0.3); }
-        .contact-social-btn.insta:hover { background: #e1306c; color: white; }
+        .contact-social-btn.insta:hover { background: #e1306c; color: white; transform: translateY(-3px); }
         .contact-social-btn.wa { color: #25d366; border-color: rgba(37,211,102,0.3); }
-        .contact-social-btn.wa:hover { background: #25d366; color: white; }
+        .contact-social-btn.wa:hover { background: #25d366; color: white; transform: translateY(-3px); }
         .contact-social-btn.yt { color: #ff0000; border-color: rgba(255,0,0,0.25); }
-        .contact-social-btn.yt:hover { background: #ff0000; color: white; }
+        .contact-social-btn.yt:hover { background: #ff0000; color: white; transform: translateY(-3px); }
         
         .map-glass {
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
-            height: 440px;
+            height: 460px;
             box-shadow: var(--shadow-luxury);
         }
         
-        .map-glass iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
         @media (max-width: 968px) {
-            .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
         }
         
         /* ============================================ FOOTER */
         .footer {
             background: var(--deep-mahogany);
-            padding: 80px 0 0;
+            padding: 90px 0 0;
         }
         
         .footer-top-inner {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
+            gap: 70px;
+            margin-bottom: 70px;
         }
         
         .footer-logo-script {
             font-family: var(--font-script);
-            font-size: 36px;
+            font-size: 40px;
             background: var(--gold-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
-        .footer-logo-serif {
-            font-size: 10px;
-            letter-spacing: 6px;
-            color: rgba(232, 213, 181, 0.4);
-        }
-        
         .footer-brand p {
             font-size: 14px;
             color: rgba(232, 213, 181, 0.5);
-            margin: 22px 0;
+            margin: 25px 0;
             line-height: 1.8;
         }
         
         .footer-socials {
             display: flex;
-            gap: 15px;
+            gap: 18px;
         }
         
         .footer-socials a {
-            width: 42px;
-            height: 42px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
-            border: 1px solid rgba(232, 213, 181, 0.2);
+            border: 1px solid rgba(232, 213, 181, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
             color: rgba(232, 213, 181, 0.5);
             text-decoration: none;
             transition: all 0.3s ease;
+            font-size: 18px;
         }
         
         .footer-socials a:hover {
             border-color: var(--antique-gold);
             color: var(--antique-gold);
-            transform: translateY(-4px);
+            transform: translateY(-5px);
         }
         
         .footer-nav h5 {
             font-size: 12px;
-            letter-spacing: 3px;
+            letter-spacing: 3.5px;
             color: var(--antique-gold);
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
         
         .footer-nav a,
         .footer-nav span {
             display: block;
             font-size: 13px;
-            color: rgba(232, 213, 181, 0.5);
+            color: rgba(232, 213, 181, 0.45);
             text-decoration: none;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             transition: all 0.3s ease;
         }
         
         .footer-nav a:hover {
             color: var(--rose-gold);
-            padding-left: 5px;
+            padding-left: 6px;
         }
         
         .footer-bottom {
-            border-top: 1px solid rgba(232, 213, 181, 0.1);
-            padding: 30px 0;
+            border-top: 1px solid rgba(232, 213, 181, 0.08);
+            padding: 35px 0;
             text-align: center;
         }
         
         .footer-bottom p {
             font-size: 12px;
-            color: rgba(232, 213, 181, 0.3);
+            color: rgba(232, 213, 181, 0.25);
         }
         
         @media (max-width: 968px) {
-            .footer-top-inner { grid-template-columns: 1fr; gap: 40px; }
+            .footer-top-inner { grid-template-columns: 1fr; gap: 45px; }
         }
         
-        /* ============================================ REVEAL & MAGNETIC */
+        /* ============================================ REVEAL ANIMATIONS */
         .reveal-up {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateY(50px);
+            transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
         }
         
         .reveal-up.visible {
@@ -1328,24 +1295,30 @@
             position: fixed;
             bottom: 35px;
             right: 35px;
-            z-index: 9990;
-            width: 62px;
-            height: 62px;
-            background: #25d366;
+            z-index: 9995;
+            width: 65px;
+            height: 65px;
+            background: linear-gradient(135deg, #25d366, #128C7E);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
+            font-size: 34px;
             color: white;
-            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
+            box-shadow: 0 15px 35px rgba(37,211,102,0.4);
             transition: all 0.3s ease;
             text-decoration: none;
+            animation: waPulse 2s infinite;
+        }
+        
+        @keyframes waPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(37,211,102,0); }
+            100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
         }
         
         .whatsapp-float:hover {
             transform: scale(1.12);
-            box-shadow: 0 15px 40px rgba(37,211,102,0.5);
         }
     </style>
 </head>
@@ -1354,6 +1327,7 @@
 <!-- Loader -->
 <div class="loader" id="loader">
     <div class="loader-inner">
+        <div class="loader-ring"></div>
         <div class="loader-logo">
             <span class="loader-logo-script">Polish</span>
             <span class="loader-logo-serif">PERFECT</span>
@@ -1361,7 +1335,7 @@
         <div class="loader-bar-track">
             <div class="loader-bar" id="loaderBar"></div>
         </div>
-        <p class="loader-tagline">Haute Couture Nail Experience</p>
+        <p class="loader-logo-serif" style="font-size: 11px; letter-spacing: 4px;">HAUTE COUTURE NAIL EXPERIENCE</p>
     </div>
 </div>
 
@@ -1370,7 +1344,9 @@
 <div class="cursor-ring" id="cursorRing"></div>
 
 <!-- Scroll Progress -->
-<div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-progress-container">
+    <div class="scroll-progress" id="scrollProgress"></div>
+</div>
 
 <!-- WhatsApp Float -->
 <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="whatsapp-float magnetic" target="_blank">
@@ -1393,7 +1369,7 @@
             <a href="#contact" class="nav-link">Contact</a>
             <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="nav-book magnetic" target="_blank">Book Now</a>
         </nav>
-        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <button class="nav-toggle" id="navToggle">
             <span></span><span></span><span></span>
         </button>
     </div>
@@ -1408,15 +1384,16 @@
         <a href="#certificate" class="mobile-nav-link">Certificate</a>
         <a href="#gallery" class="mobile-nav-link">Gallery</a>
         <a href="#contact" class="mobile-nav-link">Contact</a>
-        <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="mobile-book" target="_blank"><i class="fab fa-whatsapp"></i> Book Appointment</a>
+        <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="mobile-book" style="margin-top:20px; padding:14px 40px; background:linear-gradient(135deg,#e8d5b5,#c9a87c); color:#2c1810; border-radius:60px; text-decoration:none; font-weight:700;">Book Appointment</a>
     </div>
 </div>
 
 <!-- Hero Section -->
 <section class="hero" id="home">
-    <canvas id="heroCanvas" class="hero-bg-particles"></canvas>
+    <canvas id="heroCanvas"></canvas>
     <div class="hero-glow hero-glow-1"></div>
     <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
     
     <div class="hero-content">
         <div class="hero-founder-card reveal-up">
@@ -1452,7 +1429,7 @@
     
     <div class="hero-scroll-hint">
         <div class="scroll-line"></div>
-        <span>SCROLL</span>
+        <span>EXPLORE</span>
     </div>
 </section>
 
@@ -1462,7 +1439,7 @@
         <div class="section-header reveal-up">
             <span class="section-eyebrow">SIGNATURE SERVICES</span>
             <h2 class="section-title">Our <em>Offerings</em></h2>
-            <p class="section-desc">Each service is a curated experience of luxury and precision</p>
+            <p class="section-desc" style="font-size:16px; color:var(--warm-charcoal); opacity:0.7;">Each service is a curated experience of luxury and precision</p>
         </div>
         <div class="services-grid" id="servicesGrid"></div>
     </div>
@@ -1474,26 +1451,17 @@
         <div class="section-header reveal-up">
             <span class="section-eyebrow">POLISH PERFECT ACADEMY</span>
             <h2 class="section-title">Nail Art <em>Mastercourse</em></h2>
-            <p class="section-desc">Become a certified nail artist with our intensive program</p>
+            <p class="section-desc" style="font-size:16px;">Become a certified nail artist with our intensive program</p>
         </div>
         <div class="course-layout">
             <div class="course-highlight-card reveal-up">
                 <div class="course-highlight-badge">✦ PROFESSIONAL CERTIFICATION ✦</div>
                 <h3 class="course-heading">10 Day Nail Art Mastery</h3>
-                <p class="course-desc">Complete professional course covering all aspects of nail art and design. From beginner to advanced, master the complete art of beautiful nails.</p>
+                <p class="course-desc" style="font-size:15px; margin-bottom:30px;">Complete professional course covering all aspects of nail art and design. From beginner to advanced, master the complete art of beautiful nails.</p>
                 <div class="course-stats">
-                    <div class="course-stat">
-                        <span class="stat-num">10</span>
-                        <span class="stat-label">Days</span>
-                    </div>
-                    <div class="course-stat">
-                        <span class="stat-num">₹8,888</span>
-                        <span class="stat-label">All Inclusive</span>
-                    </div>
-                    <div class="course-stat">
-                        <span class="stat-num">100%</span>
-                        <span class="stat-label">Practical</span>
-                    </div>
+                    <div class="course-stat"><span class="stat-num">10</span><span class="stat-label">Days</span></div>
+                    <div class="course-stat"><span class="stat-num">₹8,888</span><span class="stat-label">All Inclusive</span></div>
+                    <div class="course-stat"><span class="stat-num">100%</span><span class="stat-label">Practical</span></div>
                 </div>
                 <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20am%20interested%20in%20Nail%20Art%20Course" class="btn-luxury magnetic" target="_blank">
                     <i class="fab fa-whatsapp"></i>
@@ -1501,48 +1469,12 @@
                 </a>
             </div>
             <div class="course-timeline reveal-up">
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-clock"></i></div>
-                    <div class="timeline-content">
-                        <h4>Duration & Schedule</h4>
-                        <p>10 Days · 2 hours daily · Hands-on practical training</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-hand-sparkles"></i></div>
-                    <div class="timeline-content">
-                        <h4>Nail Preparation & Shaping</h4>
-                        <p>Professional techniques for perfect nail prep and shaping</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-gem"></i></div>
-                    <div class="timeline-content">
-                        <h4>Gel & Acrylic Application</h4>
-                        <p>Master professional gel and acrylic nail application</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-star"></i></div>
-                    <div class="timeline-content">
-                        <h4>3D Art & Embellishments</h4>
-                        <p>Advanced 3D nail art with luxury embellishments</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-shield-heart"></i></div>
-                    <div class="timeline-content">
-                        <h4>Nail Health & Safety</h4>
-                        <p>Safety practices and hygiene protocols</p>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-icon"><i class="fas fa-chart-line"></i></div>
-                    <div class="timeline-content">
-                        <h4>Business Setup Guidance</h4>
-                        <p>Start your own salon with professional guidance</p>
-                    </div>
-                </div>
+                <div class="timeline-item"><div class="timeline-icon"><i class="fas fa-clock"></i></div><div class="timeline-content"><h4>Duration & Schedule</h4><p>10 Days · 2 hours daily · Hands-on practical training</p></div></div>
+                <div class="timeline-item"><div class="timeline-icon"><i class="fas fa-hand-sparkles"></i></div><div class="timeline-content"><h4>Nail Preparation & Shaping</h4><p>Professional techniques for perfect nail prep and shaping</p></div></div>
+                <div class="timeline-item"><div class="timeline-icon"><i class="fas fa-gem"></i></div><div class="timeline-content"><h4>Gel & Acrylic Application</h4><p>Master professional gel and acrylic nail application</p></div></div>
+                <div class="timeline-item"><div class="timeline-icon"><i class="fas fa-star"></i></div><div class="timeline-content"><h4>3D Art & Embellishments</h4><p>Advanced 3D nail art with luxury embellishments</p></div></div>
+                <div class="timeline-item"><div class="timeline-icon"><i class="fas fa-shield-heart"></i></div><div class="timeline-content"><h4>Nail Health & Safety</h4><p>Safety practices and hygiene protocols</p></div></div>
+                <div class="timeline-item"><div class="timeline-icon"><i class="fas fa-chart-line"></i></div><div class="timeline-content"><h4>Business Setup Guidance</h4><p>Start your own salon with professional guidance</p></div></div>
             </div>
         </div>
     </div>
@@ -1558,13 +1490,9 @@
         </div>
         <div class="certificate-showcase reveal-up">
             <div class="certificate-frame" id="certFrame">
-                <div class="cert-border-outer">
-                    <div class="cert-border-inner">
-                        <img src="certificate-k.jpg" alt="Polish Perfect Certificate" class="certificate-img" onerror="this.src='https://placehold.co/800x500/fdfbf7/c9a87c?text=Polish+Perfect+Certification&font=Georgia'">
-                    </div>
-                </div>
+                <div class="cert-border-outer"><div class="cert-border-inner"><img src="certificate-k.jpg" alt="Polish Perfect Certificate" class="certificate-img" onerror="this.src='https://placehold.co/900x550/fdfbf7/c9a87c?text=Polish+Perfect+Certification'"></div></div>
             </div>
-            <p class="cert-caption">"Recognized by International Beauty Association — Professional Grade Certification"</p>
+            <p class="cert-caption" style="font-family:var(--font-serif); font-size:17px; font-style:italic;">"Recognized by International Beauty Association — Professional Grade Certification"</p>
         </div>
     </div>
 </section>
@@ -1593,9 +1521,7 @@
     <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
     <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
     <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
-    <div class="lightbox-content">
-        <img src="" alt="" id="lightboxImg">
-    </div>
+    <div class="lightbox-content"><img src="" alt="" id="lightboxImg"></div>
 </div>
 
 <!-- Contact Section -->
@@ -1608,38 +1534,12 @@
         </div>
         <div class="contact-grid">
             <div class="contact-cards reveal-up">
-                <div class="contact-card">
-                    <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <div class="contact-card-body">
-                        <h4>VISIT US</h4>
-                        <p>205, Opera Business Hub, Lajamani Chowk, Mota Varachha, Surat, Gujarat - 394101</p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div>
-                    <div class="contact-card-body">
-                        <h4>CALL US</h4>
-                        <p><a href="tel:+918849960489">+91 8849960489</a></p>
-                    </div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon"><i class="fas fa-clock"></i></div>
-                    <div class="contact-card-body">
-                        <h4>WORKING HOURS</h4>
-                        <p>Monday – Saturday: 10:00 AM – 8:00 PM<br>Sunday: 11:00 AM – 5:00 PM</p>
-                    </div>
-                </div>
-                <div class="contact-social">
-                    <a href="https://instagram.com/polish_perfect18" class="contact-social-btn insta" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                    <a href="https://wa.me/918849960489" class="contact-social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    <a href="https://youtube.com/@khushidesai3789" class="contact-social-btn yt" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-                </div>
+                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div><div class="contact-card-body"><h4>VISIT US</h4><p>205, Opera Business Hub, Lajamani Chowk, Mota Varachha, Surat, Gujarat - 394101</p></div></div>
+                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div><div class="contact-card-body"><h4>CALL US</h4><p><a href="tel:+918849960489">+91 8849960489</a></p></div></div>
+                <div class="contact-card"><div class="contact-card-icon"><i class="fas fa-clock"></i></div><div class="contact-card-body"><h4>WORKING HOURS</h4><p>Monday – Saturday: 10:00 AM – 8:00 PM<br>Sunday: 11:00 AM – 5:00 PM</p></div></div>
+                <div class="contact-social"><a href="https://instagram.com/polish_perfect18" class="contact-social-btn insta" target="_blank"><i class="fab fa-instagram"></i> Instagram</a><a href="https://wa.me/918849960489" class="contact-social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="https://youtube.com/@khushidesai3789" class="contact-social-btn yt" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></div>
             </div>
-            <div class="contact-map-wrap reveal-up">
-                <div class="map-glass">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.238165411898!2d72.8673143759963!3d21.22131648068711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f3e7c5df2ef%3A0x4f5f7b3e8e1e1e1e!2sOpera%20Business%20Hub%2C%20Lajamani%20Chowk%2C%20Mota%20Varachha%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1684838997890!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
+            <div class="contact-map-wrap reveal-up"><div class="map-glass"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.238165411898!2d72.8673143759963!3d21.22131648068711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f3e7c5df2ef%3A0x4f5f7b3e8e1e1e1e!2sOpera%20Business%20Hub%2C%20Lajamani%20Chowk%2C%20Mota%20Varachha%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1684838997890!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe></div></div>
         </div>
     </div>
 </section>
@@ -1648,64 +1548,31 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-top-inner">
-            <div class="footer-brand">
-                <div class="footer-logo">
-                    <span class="footer-logo-script">Polish</span>
-                    <span class="footer-logo-serif">PERFECT</span>
-                </div>
-                <p>India's premier destination for luxury nail artistry and professional nail education. Crafting elegance, one nail at a time.</p>
-                <div class="footer-socials">
-                    <a href="https://instagram.com/polish_perfect18" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://wa.me/918849960489" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                    <a href="https://youtube.com/@khushidesai3789" target="_blank"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-            <div class="footer-nav">
-                <h5>EXPLORE</h5>
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#course">Academy</a>
-                <a href="#certificate">Certificate</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
-            </div>
-            <div class="footer-nav">
-                <h5>SERVICES</h5>
-                <a href="#services">Luxury Manicure</a>
-                <a href="#services">Signature Pedicure</a>
-                <a href="#services">Nail Art Design</a>
-                <a href="#services">Gel Extensions</a>
-                <a href="#services">Acrylic Nails</a>
-                <a href="#services">Nail Repair</a>
-            </div>
-            <div class="footer-nav">
-                <h5>CONTACT</h5>
-                <a href="tel:+918849960489">+91 8849960489</a>
-                <span>205, Opera Business Hub</span>
-                <span>Lajamani Chowk, Mota Varachha</span>
-                <span>Surat, Gujarat</span>
-            </div>
+            <div class="footer-brand"><div class="footer-logo"><span class="footer-logo-script">Polish</span><span class="footer-logo-serif">PERFECT</span></div><p>India's premier destination for luxury nail artistry and professional nail education. Crafting elegance, one nail at a time.</p><div class="footer-socials"><a href="https://instagram.com/polish_perfect18" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/918849960489" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="https://youtube.com/@khushidesai3789" target="_blank"><i class="fab fa-youtube"></i></a></div></div>
+            <div class="footer-nav"><h5>EXPLORE</h5><a href="#home">Home</a><a href="#services">Services</a><a href="#course">Academy</a><a href="#certificate">Certificate</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a></div>
+            <div class="footer-nav"><h5>SERVICES</h5><a href="#services">Luxury Manicure</a><a href="#services">Signature Pedicure</a><a href="#services">Nail Art Design</a><a href="#services">Gel Extensions</a><a href="#services">Acrylic Nails</a><a href="#services">Nail Repair</a></div>
+            <div class="footer-nav"><h5>CONTACT</h5><a href="tel:+918849960489">+91 8849960489</a><span>205, Opera Business Hub</span><span>Lajamani Chowk, Mota Varachha</span><span>Surat, Gujarat</span></div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Polish Perfect — Founded by Khushi Desai. All Rights Reserved.</p>
-        </div>
+        <div class="footer-bottom"><p>&copy; 2025 Polish Perfect — Founded by Khushi Desai. All Rights Reserved.</p></div>
     </div>
 </footer>
 
 <script type="module">
     import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
     
-    // 3D Nail Polish Bottle - Rose Gold & Pearl Theme
+    // ADVANCED 3D NAIL POLISH BOTTLE WITH REFLECTIONS
     const canvas = document.getElementById('threeCanvas');
     if (canvas) {
         const scene = new THREE.Scene();
         scene.background = null;
-        scene.fog = new THREE.FogExp2(0x2c1810, 0.008);
+        scene.fog = new THREE.FogExp2(0x2c1810, 0.006);
         
-        const camera = new THREE.PerspectiveCamera(42, canvas.parentElement.clientWidth / canvas.parentElement.clientHeight, 0.1, 100);
-        camera.position.set(0, 0.5, 5.5);
+        const camera = new THREE.PerspectiveCamera(40, canvas.parentElement.clientWidth / canvas.parentElement.clientHeight, 0.1, 100);
+        camera.position.set(0, 0.6, 6);
         
         const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setPixelRatio(window.devicePixelRatio);
         
         function resizeCanvas() {
             const w = canvas.parentElement.clientWidth;
@@ -1717,104 +1584,119 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
         
-        // Premium Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        // Premium Lighting System
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
         scene.add(ambientLight);
         
-        const keyLight = new THREE.DirectionalLight(0xfff0e0, 1.2);
-        keyLight.position.set(2, 3, 4);
-        keyLight.castShadow = true;
-        scene.add(keyLight);
+        const mainLight = new THREE.DirectionalLight(0xfff5e8, 1.3);
+        mainLight.position.set(2.5, 4, 3.5);
+        mainLight.castShadow = true;
+        scene.add(mainLight);
         
-        const fillLight = new THREE.PointLight(0xe8b4b8, 0.6);
-        fillLight.position.set(-2, 1, 3);
+        const fillLight = new THREE.PointLight(0xe8b4b8, 0.7);
+        fillLight.position.set(-2, 1.5, 3);
         scene.add(fillLight);
         
-        const rimLight = new THREE.PointLight(0xc9a87c, 0.8);
-        rimLight.position.set(1, 1.5, -2.5);
+        const rimLight = new THREE.PointLight(0xc9a87c, 0.9);
+        rimLight.position.set(1.5, 2, -3);
         scene.add(rimLight);
         
-        const backLight = new THREE.PointLight(0xe8d5b5, 0.5);
-        backLight.position.set(0, 1, -3);
+        const backLight = new THREE.PointLight(0xe8d5b5, 0.6);
+        backLight.position.set(0, 1.2, -3.5);
         scene.add(backLight);
+        
+        const keyFill = new THREE.PointLight(0xffaa88, 0.5);
+        keyFill.position.set(1, 1, 2);
+        scene.add(keyFill);
         
         // Bottle Group
         const bottleGroup = new THREE.Group();
         scene.add(bottleGroup);
         
-        // Glass Body - Elegant tapered shape
-        const bodyGeo = new THREE.CylinderGeometry(0.58, 0.68, 2.3, 96, 96);
+        // Glass Body with Transmission
+        const bodyGeo = new THREE.CylinderGeometry(0.62, 0.72, 2.45, 128, 128);
         const glassMat = new THREE.MeshPhysicalMaterial({
-            color: 0xf0d5cf,
-            metalness: 0.88,
-            roughness: 0.12,
+            color: 0xf5e0dc,
+            metalness: 0.92,
+            roughness: 0.08,
             transparent: true,
-            opacity: 0.72,
+            opacity: 0.68,
             clearcoat: 1,
-            clearcoatRoughness: 0.04,
-            reflectivity: 0.5
+            clearcoatRoughness: 0.03,
+            reflectivity: 0.55,
+            transmission: 0.15
         });
         const body = new THREE.Mesh(bodyGeo, glassMat);
         body.castShadow = true;
         bottleGroup.add(body);
         
-        // Liquid inside - Rose gold tint
-        const liquidGeo = new THREE.CylinderGeometry(0.54, 0.62, 1.7, 96);
+        // Liquid
+        const liquidGeo = new THREE.CylinderGeometry(0.57, 0.66, 1.85, 128);
         const liquidMat = new THREE.MeshPhysicalMaterial({
             color: 0xe8b4b8,
             emissive: 0x552222,
-            emissiveIntensity: 0.15,
-            metalness: 0.3,
-            roughness: 0.25,
+            emissiveIntensity: 0.12,
+            metalness: 0.25,
+            roughness: 0.22,
             transparent: true,
-            opacity: 0.88
+            opacity: 0.92
         });
         const liquid = new THREE.Mesh(liquidGeo, liquidMat);
-        liquid.position.y = -0.18;
+        liquid.position.y = -0.2;
         bottleGroup.add(liquid);
         
-        // Gold Cap - Faceted
-        const capGeo = new THREE.CylinderGeometry(0.61, 0.65, 0.55, 48);
-        const capMat = new THREE.MeshStandardMaterial({ color: 0xc9a87c, metalness: 0.96, roughness: 0.08, emissive: 0x442200, emissiveIntensity: 0.1 });
+        // Gold Cap with Facets
+        const capGeo = new THREE.CylinderGeometry(0.64, 0.68, 0.58, 64);
+        const capMat = new THREE.MeshStandardMaterial({ color: 0xc9a87c, metalness: 0.97, roughness: 0.06, emissive: 0x442200, emissiveIntensity: 0.08 });
         const cap = new THREE.Mesh(capGeo, capMat);
-        cap.position.y = 1.32;
+        cap.position.y = 1.38;
         bottleGroup.add(cap);
         
-        // Decorative facet rings on cap
-        const ringGeo = new THREE.TorusGeometry(0.62, 0.03, 32, 100);
-        const ringMat = new THREE.MeshStandardMaterial({ color: 0xe8d5b5, metalness: 0.95, roughness: 0.05 });
-        const ring1 = new THREE.Mesh(ringGeo, ringMat);
-        ring1.position.y = 1.45;
-        ring1.rotation.x = Math.PI / 2;
-        bottleGroup.add(ring1);
+        // Cap Details - Decorative Rings
+        const ringGeo = new THREE.TorusGeometry(0.655, 0.025, 48, 120);
+        const ringMat = new THREE.MeshStandardMaterial({ color: 0xe8d5b5, metalness: 0.95, roughness: 0.04 });
+        const ringTop = new THREE.Mesh(ringGeo, ringMat);
+        ringTop.position.y = 1.52;
+        ringTop.rotation.x = Math.PI / 2;
+        bottleGroup.add(ringTop);
         
-        const ring2 = new THREE.Mesh(ringGeo, ringMat);
-        ring2.position.y = 1.58;
-        ring2.rotation.x = Math.PI / 2;
-        bottleGroup.add(ring2);
+        const ringBottom = new THREE.Mesh(ringGeo, ringMat);
+        ringBottom.position.y = 1.22;
+        ringBottom.rotation.x = Math.PI / 2;
+        bottleGroup.add(ringBottom);
         
-        // Pearl accent on cap
-        const pearlGeo = new THREE.SphereGeometry(0.12, 32, 32);
-        const pearlMat = new THREE.MeshStandardMaterial({ color: 0xfff5f0, metalness: 0.2, roughness: 0.1, emissive: 0xffaa88, emissiveIntensity: 0.2 });
+        // Pearl Accent
+        const pearlGeo = new THREE.SphereGeometry(0.13, 48, 48);
+        const pearlMat = new THREE.MeshStandardMaterial({ color: 0xfff5f0, metalness: 0.15, roughness: 0.08, emissive: 0xffccaa, emissiveIntensity: 0.15 });
         const pearl = new THREE.Mesh(pearlGeo, pearlMat);
-        pearl.position.set(0, 1.68, 0.68);
+        pearl.position.set(0, 1.75, 0.72);
         bottleGroup.add(pearl);
         
-        // Floating sparkle particles around bottle
-        const sparkleCount = 200;
+        // Floating Sparkles System
+        const sparkleCount = 350;
         const sparkleGeo = new THREE.BufferGeometry();
         const sparklePositions = new Float32Array(sparkleCount * 3);
+        const sparkleColors = new Float32Array(sparkleCount * 3);
         for (let i = 0; i < sparkleCount; i++) {
-            sparklePositions[i*3] = (Math.random() - 0.5) * 3.5;
-            sparklePositions[i*3+1] = (Math.random() - 0.5) * 3.5;
-            sparklePositions[i*3+2] = (Math.random() - 0.5) * 3;
+            sparklePositions[i*3] = (Math.random() - 0.5) * 4.2;
+            sparklePositions[i*3+1] = (Math.random() - 0.5) * 4;
+            sparklePositions[i*3+2] = (Math.random() - 0.5) * 3.5;
+            const colorChoice = Math.random();
+            if (colorChoice < 0.33) {
+                sparkleColors[i*3] = 0xe8; sparkleColors[i*3+1] = 0xd5; sparkleColors[i*3+2] = 0xb5;
+            } else if (colorChoice < 0.66) {
+                sparkleColors[i*3] = 0xe8; sparkleColors[i*3+1] = 0xb4; sparkleColors[i*3+2] = 0xb8;
+            } else {
+                sparkleColors[i*3] = 0xc9; sparkleColors[i*3+1] = 0xa8; sparkleColors[i*3+2] = 0x7c;
+            }
         }
         sparkleGeo.setAttribute('position', new THREE.BufferAttribute(sparklePositions, 3));
-        const sparkleMatPoints = new THREE.PointsMaterial({ color: 0xe8d5b5, size: 0.025, transparent: true, blending: THREE.AdditiveBlending });
+        sparkleGeo.setAttribute('color', new THREE.BufferAttribute(sparkleColors, 3));
+        const sparkleMatPoints = new THREE.PointsMaterial({ size: 0.022, vertexColors: true, transparent: true, blending: THREE.AdditiveBlending });
         const sparkles = new THREE.Points(sparkleGeo, sparkleMatPoints);
         bottleGroup.add(sparkles);
         
-        // Mouse interaction
+        // Mouse Interaction
         let mouseX = 0, mouseY = 0;
         let targetRotX = 0, targetRotY = 0;
         let currentRotX = 0, currentRotY = 0;
@@ -1823,30 +1705,35 @@
         document.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX / window.innerWidth) * 2 - 1;
             mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-            targetRotY = mouseX * 0.4;
-            targetRotX = mouseY * 0.2;
+            targetRotY = mouseX * 0.45;
+            targetRotX = mouseY * 0.22;
         });
         
         function animate3D() {
             requestAnimationFrame(animate3D);
             time += 0.012;
             
-            currentRotX += (targetRotX - currentRotX) * 0.06;
-            currentRotY += (targetRotY - currentRotY) * 0.06;
+            currentRotX += (targetRotX - currentRotX) * 0.055;
+            currentRotY += (targetRotY - currentRotY) * 0.055;
             
             bottleGroup.rotation.x = currentRotX;
-            bottleGroup.rotation.y = currentRotY + Math.sin(time) * 0.12;
-            bottleGroup.position.y = Math.sin(time * 0.7) * 0.06;
+            bottleGroup.rotation.y = currentRotY + Math.sin(time * 0.6) * 0.1;
+            bottleGroup.position.y = Math.sin(time * 0.65) * 0.07;
             
-            sparkles.rotation.y = time * 0.3;
-            sparkles.rotation.x = Math.sin(time * 0.5) * 0.2;
+            sparkles.rotation.y = time * 0.25;
+            sparkles.rotation.x = Math.sin(time * 0.4) * 0.15;
+            sparkles.rotation.z = Math.cos(time * 0.3) * 0.1;
+            
+            // Animate lights for dynamic feel
+            rimLight.intensity = 0.8 + Math.sin(time * 1.5) * 0.15;
+            fillLight.intensity = 0.6 + Math.sin(time * 1.2) * 0.1;
             
             renderer.render(scene, camera);
         }
         animate3D();
     }
     
-    // Hero Particles
+    // Hero Particles System
     const heroCanvas = document.getElementById('heroCanvas');
     if (heroCanvas) {
         const ctx = heroCanvas.getContext('2d');
@@ -1862,14 +1749,16 @@
         resizeHero();
         window.addEventListener('resize', resizeHero);
         
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 200; i++) {
             particles.push({
                 x: Math.random() * width,
                 y: Math.random() * height,
-                radius: Math.random() * 2.5 + 0.5,
-                alpha: Math.random() * 0.25 + 0.05,
-                vx: (Math.random() - 0.5) * 0.3,
-                vy: (Math.random() - 0.5) * 0.2
+                radius: Math.random() * 2.8 + 0.5,
+                alpha: Math.random() * 0.3 + 0.05,
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.25,
+                pulseSpeed: 0.01 + Math.random() * 0.02,
+                pulsePhase: Math.random() * Math.PI * 2
             });
         }
         
@@ -1883,9 +1772,10 @@
                 if (p.y < 0) p.y = height;
                 if (p.y > height) p.y = 0;
                 
+                const pulse = 0.7 + Math.sin(Date.now() * p.pulseSpeed + p.pulsePhase) * 0.3;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(232, 213, 181, ${p.alpha})`;
+                ctx.arc(p.x, p.y, p.radius * pulse, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(232, 213, 181, ${p.alpha * pulse})`;
                 ctx.fill();
             });
             requestAnimationFrame(drawHero);
@@ -1900,7 +1790,7 @@
     const loaderBar = document.getElementById('loaderBar');
     let progress = 0;
     const interval = setInterval(() => {
-        progress += Math.random() * 12 + 4;
+        progress += Math.random() * 10 + 3;
         if (progress >= 100) {
             progress = 100;
             clearInterval(interval);
@@ -1908,10 +1798,10 @@
             setTimeout(() => {
                 loader.classList.add('hidden');
                 document.body.style.overflow = '';
-            }, 600);
+            }, 700);
         }
         loaderBar.style.width = Math.min(progress, 100) + '%';
-    }, 90);
+    }, 80);
     
     // Custom Cursor
     const cursorDot = document.getElementById('cursorDot');
@@ -1936,8 +1826,8 @@
         }
         animateRing();
         
-        const hoverElements = document.querySelectorAll('a, button, .service-card, .gallery-item, .btn-luxury, .btn-outline');
-        hoverElements.forEach(el => {
+        const hoverEls = document.querySelectorAll('a, button, .service-card, .gallery-item, .btn-luxury, .btn-outline, .nav-link, .nav-book');
+        hoverEls.forEach(el => {
             el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
             el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
         });
@@ -1954,14 +1844,11 @@
     // Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
     });
     
-    // Mobile Menu Toggle
+    // Mobile Menu
     const navToggle = document.getElementById('navToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     if (navToggle && mobileMenu) {
@@ -1986,19 +1873,15 @@
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 120;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
+            if (window.scrollY >= sectionTop) current = section.getAttribute('id');
         });
         navLinks.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
-            }
+            if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
         });
     });
     
-    // Services Data
+    // Services Data - USING EXISTING IMAGES
     const services = [
         { name: 'Luxury Manicure', desc: 'A complete hand rejuvenation with diamond dust massage, organic oils, and paraffin therapy.', price: '₹800', badge: 'Popular', img: 'image-lux.jpg' },
         { name: 'Signature Pedicure', desc: 'Aromatherapy foot soak with gold infusion, exfoliation, and reflexology massage.', price: '₹1200', badge: 'Best Seller', img: 'Signature-Pedicure.jpg' },
@@ -2012,9 +1895,10 @@
     if (servicesGrid) {
         servicesGrid.innerHTML = services.map(service => `
             <div class="service-card magnetic">
-                ${service.badge ? `<div class="service-badge" style="position:absolute; top:16px; left:16px; background:linear-gradient(135deg, #e8d5b5, #c9a87c); color:#2c1810; font-size:10px; font-weight:700; letter-spacing:1.5px; padding:5px 14px; border-radius:30px; z-index:2;">${service.badge}</div>` : ''}
+                ${service.badge ? `<div style="position:absolute; top:16px; left:16px; background:linear-gradient(135deg,#e8d5b5,#c9a87c); color:#2c1810; font-size:10px; font-weight:800; letter-spacing:1.5px; padding:6px 16px; border-radius:40px; z-index:5;">${service.badge}</div>` : ''}
                 <div class="service-img">
                     <img src="${service.img}" alt="${service.name}" onerror="this.src='https://placehold.co/500x400/fdfbf7/c9a87c?text=${service.name}'">
+                    <div class="service-img-shine"></div>
                 </div>
                 <div class="service-body">
                     <h3>${service.name}</h3>
@@ -2028,21 +1912,14 @@
         `).join('');
     }
     
-    // Gallery Data
+    // Gallery Data - USING EXISTING IMAGES (DO NOT CHANGE)
     const galleryItems = [
-        { img: 'image-1.jpg', cat: 'luxury' },
-        { img: 'image-2.jpg', cat: 'gel' },
-        { img: 'image-3.jpg', cat: 'acrylic' },
-        { img: 'image-4.jpg', cat: 'bridal' },
-        { img: 'image-5.jpg', cat: 'gel' },
-        { img: 'image-6.jpg', cat: 'luxury' },
-        { img: 'image-7.jpg', cat: 'acrylic' },
-        { img: 'image-8(2).jpg', cat: 'bridal' },
-        { img: 'image-9.jpg', cat: 'luxury' }
+        { img: 'image-1.jpg', cat: 'luxury' }, { img: 'image-2.jpg', cat: 'gel' }, { img: 'image-3.jpg', cat: 'acrylic' },
+        { img: 'image-4.jpg', cat: 'bridal' }, { img: 'image-5.jpg', cat: 'gel' }, { img: 'image-6.jpg', cat: 'luxury' },
+        { img: 'image-7.jpg', cat: 'acrylic' }, { img: 'image-8(2).jpg', cat: 'bridal' }, { img: 'image-9.jpg', cat: 'luxury' }
     ];
     
     const galleryGrid = document.getElementById('galleryGrid');
-    
     function renderGallery(filter = 'all') {
         if (!galleryGrid) return;
         const filtered = filter === 'all' ? galleryItems : galleryItems.filter(item => item.cat === filter);
@@ -2056,11 +1933,9 @@
     }
     
     function attachGalleryEvents() {
-        const items = document.querySelectorAll('.gallery-item');
-        items.forEach(item => {
+        document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', () => {
-                const img = item.querySelector('img').src;
-                document.getElementById('lightboxImg').src = img;
+                document.getElementById('lightboxImg').src = item.querySelector('img').src;
                 document.getElementById('lightbox').classList.add('open');
                 document.body.style.overflow = 'hidden';
             });
@@ -2070,10 +1945,9 @@
     renderGallery();
     
     // Gallery Filters
-    const filters = document.querySelectorAll('.gallery-filter');
-    filters.forEach(filter => {
+    document.querySelectorAll('.gallery-filter').forEach(filter => {
         filter.addEventListener('click', () => {
-            filters.forEach(f => f.classList.remove('active'));
+            document.querySelectorAll('.gallery-filter').forEach(f => f.classList.remove('active'));
             filter.classList.add('active');
             renderGallery(filter.dataset.filter);
         });
@@ -2084,75 +1958,53 @@
     const lightboxClose = document.getElementById('lightboxClose');
     const lightboxPrev = document.getElementById('lightboxPrev');
     const lightboxNext = document.getElementById('lightboxNext');
-    let currentImages = [];
-    let currentIndex = 0;
-    
-    function updateLightboxImages() {
-        currentImages = Array.from(document.querySelectorAll('.gallery-item img')).map(img => img.src);
-    }
+    const lightboxImg = document.getElementById('lightboxImg');
     
     if (lightboxClose) {
         lightboxClose.addEventListener('click', () => {
             lightbox.classList.remove('open');
             document.body.style.overflow = '';
         });
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
-                lightbox.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; } });
+        
+        let currentGallery = [];
+        function updateCurrentImages() { currentGallery = Array.from(document.querySelectorAll('.gallery-item img')).map(img => img.src); }
         
         lightboxPrev.addEventListener('click', () => {
-            updateLightboxImages();
-            currentIndex = currentImages.indexOf(document.getElementById('lightboxImg').src);
-            if (currentIndex > 0) {
-                document.getElementById('lightboxImg').src = currentImages[currentIndex - 1];
-            }
+            updateCurrentImages();
+            let idx = currentGallery.indexOf(lightboxImg.src);
+            if (idx > 0) lightboxImg.src = currentGallery[idx - 1];
+            else lightboxImg.src = currentGallery[currentGallery.length - 1];
         });
-        
         lightboxNext.addEventListener('click', () => {
-            updateLightboxImages();
-            currentIndex = currentImages.indexOf(document.getElementById('lightboxImg').src);
-            if (currentIndex < currentImages.length - 1) {
-                document.getElementById('lightboxImg').src = currentImages[currentIndex + 1];
-            }
+            updateCurrentImages();
+            let idx = currentGallery.indexOf(lightboxImg.src);
+            if (idx < currentGallery.length - 1) lightboxImg.src = currentGallery[idx + 1];
+            else lightboxImg.src = currentGallery[0];
         });
     }
     
-    // GSAP Reveal Animations
+    // GSAP Animations
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
         gsap.registerPlugin(ScrollTrigger);
         
         document.querySelectorAll('.reveal-up').forEach(el => {
-            gsap.fromTo(el,
-                { opacity: 0, y: 50 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1,
-                    scrollTrigger: {
-                        trigger: el,
-                        start: 'top 85%',
-                        end: 'bottom 65%',
-                        toggleActions: 'play none none reverse'
-                    }
-                }
-            );
+            gsap.fromTo(el, { opacity: 0, y: 60 }, {
+                opacity: 1, y: 0, duration: 1.1,
+                scrollTrigger: { trigger: el, start: 'top 85%', end: 'bottom 65%', toggleActions: 'play none none reverse' }
+            });
         });
         
-        // Certificate 3D hover effect
+        // Certificate 3D Hover
         const certFrame = document.getElementById('certFrame');
         if (certFrame) {
             certFrame.addEventListener('mousemove', (e) => {
                 const rect = certFrame.getBoundingClientRect();
                 const x = (e.clientX - rect.left) / rect.width - 0.5;
                 const y = (e.clientY - rect.top) / rect.height - 0.5;
-                certFrame.style.transform = `perspective(1000px) rotateY(${x * 12}deg) rotateX(${-y * 8}deg)`;
+                certFrame.style.transform = `perspective(1200px) rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`;
             });
-            certFrame.addEventListener('mouseleave', () => {
-                certFrame.style.transform = 'perspective(1000px) rotateY(0) rotateX(0)';
-            });
+            certFrame.addEventListener('mouseleave', () => { certFrame.style.transform = 'perspective(1200px) rotateY(0) rotateX(0)'; });
         }
     }
     
@@ -2162,14 +2014,12 @@
             const rect = btn.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+            btn.style.transform = `translate(${x * 0.25}px, ${y * 0.25}px)`;
         });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = '';
-        });
+        btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
     
-    // Smooth Scroll for anchor links
+    // Smooth Scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
@@ -2178,25 +2028,15 @@
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                if (mobileMenu.classList.contains('open')) {
-                    mobileMenu.classList.remove('open');
-                    navToggle.classList.remove('open');
-                }
+                if (mobileMenu.classList.contains('open')) { mobileMenu.classList.remove('open'); navToggle.classList.remove('open'); document.body.style.overflow = ''; }
             }
         });
     });
     
     // Lenis Smooth Scroll
     if (typeof Lenis !== 'undefined') {
-        const lenis = new Lenis({
-            smoothWheel: true,
-            syncTouch: true,
-            lerp: 0.08
-        });
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
+        const lenis = new Lenis({ smoothWheel: true, syncTouch: true, lerp: 0.07 });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
     }
 </script>
