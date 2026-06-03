@@ -2,525 +2,2175 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polish Perfect — Luxury Nail Art Studio | Surat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Polish Perfect | Luxury Nail Art Studio & Academy</title>
     <meta name="description" content="Polish Perfect by Khushi Desai — Premium nail art studio & academy in Surat. Luxury manicure, gel nails, nail art courses with certification.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+    
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <style>
+        /* ============================================
+           POLISH PERFECT — PREMIUM LUXURY STYLES
+        ============================================ */
+        
+        :root {
+            --pearl: #faf8f5;
+            --cream: #f5f0e8;
+            --blush: #f2ddd8;
+            --champagne: #d4af7a;
+            --rose-gold: #c9897a;
+            --gold: #b8963e;
+            --gold-light: #e8c97a;
+            --purple: #6b4f72;
+            --purple-light: #9b7aaa;
+            --dark: #1a1218;
+            --dark-mid: #2d1f28;
+            --text: #3d2d38;
+            --text-light: #7a6575;
+            --white: #ffffff;
+            --glass: rgba(255,255,255,0.12);
+            --glass-border: rgba(212,175,122,0.25);
+            --shadow-gold: rgba(184,150,62,0.25);
+            --shadow-rose: rgba(201,137,122,0.2);
+            --transition: 0.45s cubic-bezier(0.23,1,0.32,1);
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Jost', sans-serif;
+            --font-script: 'Dancing Script', cursive;
+            --navbar-height: 80px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        body {
+            background: var(--pearl);
+            color: var(--text);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--champagne);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+        
+        .cursor-ring {
+            width: 36px;
+            height: 36px;
+            border: 1.5px solid rgba(212, 175, 122, 0.6);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 99998;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s var(--transition), height 0.3s var(--transition);
+        }
+        
+        .cursor-ring.hovered {
+            width: 56px;
+            height: 56px;
+            border-color: var(--rose-gold);
+        }
+        
+        @media (max-width: 768px) {
+            .cursor-dot, .cursor-ring { display: none; }
+            body { cursor: auto; }
+        }
+        
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--champagne), var(--rose-gold), var(--purple-light));
+            z-index: 9999;
+            transition: width 0.1s linear;
+        }
+        
+        /* Loader */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            z-index: 99990;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .loader-inner {
+            text-align: center;
+        }
+        
+        .loader-logo {
+            margin-bottom: 48px;
+            animation: loaderReveal 0.8s 0.2s both;
+        }
+        
+        @keyframes loaderReveal {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .loader-logo-script {
+            font-family: var(--font-script);
+            font-size: 52px;
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            line-height: 1;
+        }
+        
+        .loader-logo-serif {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            letter-spacing: 8px;
+            color: rgba(255,255,255,0.4);
+            display: block;
+            margin-top: 8px;
+        }
+        
+        .loader-bar-track {
+            width: 200px;
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+            margin: 0 auto 20px;
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        
+        .loader-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--champagne), var(--gold-light));
+            transition: width 0.1s linear;
+        }
+        
+        .loader-tagline {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.3);
+            text-transform: uppercase;
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+        
+        .navbar.scrolled {
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(20px);
+            padding: 12px 0;
+            box-shadow: 0 1px 0 rgba(212, 175, 122, 0.2);
+        }
+        
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+        }
+        
+        .nav-logo-script {
+            font-family: var(--font-script);
+            font-size: 26px;
+            background: linear-gradient(135deg, var(--gold), var(--champagne));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-logo-serif {
+            font-family: var(--font-sans);
+            font-size: 9px;
+            letter-spacing: 5px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+        
+        .navbar:not(.scrolled) .nav-logo-serif {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .navbar:not(.scrolled) .nav-link {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+        }
+        
+        .nav-link {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--text-light);
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--champagne), var(--rose-gold));
+            transition: width 0.35s var(--transition);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--champagne);
+        }
+        
+        .nav-book {
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 10px 24px;
+            border: 1px solid var(--champagne);
+            color: var(--champagne) !important;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-book:hover {
+            background: var(--champagne);
+            color: var(--dark) !important;
+            box-shadow: 0 4px 20px var(--shadow-gold);
+        }
+        
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-toggle span {
+            width: 24px;
+            height: 1.5px;
+            background: var(--champagne);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-toggle.open span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+        
+        .nav-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .nav-toggle.open span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            background: var(--dark);
+            z-index: 8999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-menu-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .mobile-nav-link {
+            font-family: var(--font-serif);
+            font-size: 36px;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .mobile-nav-link:hover {
+            color: var(--gold-light);
+        }
+        
+        .mobile-book {
+            margin-top: 16px;
+            padding: 14px 36px;
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light));
+            color: var(--dark);
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-toggle { display: flex; }
+            .nav-container { padding: 0 20px; }
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--dark-mid) 0%, var(--dark) 100%);
+        }
+        
+        #heroCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .hero-glow {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: 1;
+        }
+        
+        .hero-glow-1 {
+            width: 600px;
+            height: 600px;
+            top: -200px;
+            left: -200px;
+            background: radial-gradient(circle, var(--purple), transparent 70%);
+            animation: float1 8s ease-in-out infinite alternate;
+        }
+        
+        .hero-glow-2 {
+            width: 500px;
+            height: 500px;
+            top: 50%;
+            right: 0;
+            background: radial-gradient(circle, var(--rose-gold), transparent 70%);
+            animation: float2 10s ease-in-out infinite alternate;
+        }
+        
+        .hero-glow-3 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: 30%;
+            background: radial-gradient(circle, var(--champagne), transparent 70%);
+            animation: float1 12s ease-in-out infinite alternate-reverse;
+        }
+        
+        @keyframes float1 {
+            from { transform: translate(0,0) scale(1); }
+            to { transform: translate(40px,30px) scale(1.1); }
+        }
+        
+        @keyframes float2 {
+            from { transform: translate(0,0) scale(1); }
+            to { transform: translate(-30px,20px) scale(1.08); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 160px 40px 80px;
+            width: 100%;
+        }
+        
+        .hero-founder-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(212,175,122,0.3);
+            backdrop-filter: blur(20px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin-bottom: 32px;
+        }
+        
+        .founder-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--champagne), var(--rose-gold));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+        }
+        
+        .founder-label {
+            font-size: 11px;
+            color: rgba(255,255,255,0.45);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        
+        .founder-name {
+            font-size: 14px;
+            color: var(--gold-light);
+            font-weight: 500;
+        }
+        
+        .hero-title {
+            font-family: var(--font-serif);
+            font-size: clamp(48px, 7vw, 88px);
+            font-weight: 300;
+            line-height: 1.05;
+            color: white;
+            margin-bottom: 24px;
+        }
+        
+        .hero-title em {
+            font-style: italic;
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light), var(--rose-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero-subtitle {
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 48px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        
+        .hero-3d-scene {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 45%;
+            z-index: 5;
+            pointer-events: all;
+        }
+        
+        #threeCanvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        
+        .hero-scroll-hint {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .scroll-line {
+            width: 1px;
+            height: 48px;
+            background: linear-gradient(var(--champagne), transparent);
+            animation: scrollPulse 2s infinite;
+        }
+        
+        @keyframes scrollPulse {
+            0%,100% { opacity: 0.3; transform: scaleY(1); }
+            50% { opacity: 0.8; transform: scaleY(1.1); }
+        }
+        
+        .hero-scroll-hint span {
+            font-size: 10px;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.3);
+        }
+        
+        @media (max-width: 1100px) {
+            .hero-3d-scene { display: none; }
+            .hero-content { padding-left: 40px; max-width: 100%; }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content { padding: 140px 20px 80px; }
+            .hero-title { font-size: 48px; }
+        }
+        
+        /* Buttons */
+        .btn-luxury, .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.4s var(--transition);
+        }
+        
+        .btn-luxury {
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light));
+            color: var(--dark);
+            box-shadow: 0 4px 24px var(--shadow-gold);
+        }
+        
+        .btn-luxury:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(184,150,62,0.5);
+        }
+        
+        .btn-outline {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(212,175,122,0.4);
+            backdrop-filter: blur(12px);
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .btn-outline:hover {
+            background: rgba(212,175,122,0.15);
+            border-color: var(--champagne);
+            transform: translateY(-2px);
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 36px;
+            right: 36px;
+            z-index: 9990;
+            width: 58px;
+            height: 58px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(37,211,102,0.4);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.12);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .section {
+            padding: 120px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 72px;
+        }
+        
+        .section-eyebrow {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--champagne);
+            margin-bottom: 16px;
+        }
+        
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(36px, 5vw, 60px);
+            font-weight: 300;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+        
+        .section-title em {
+            font-style: italic;
+            color: var(--rose-gold);
+        }
+        
+        .section-desc {
+            font-size: 15px;
+            color: var(--text-light);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(212,175,122,0.12);
+            box-shadow: 0 4px 24px rgba(30,15,25,0.06);
+            transition: all 0.4s var(--transition);
+            cursor: pointer;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(30,15,25,0.12);
+        }
+        
+        .service-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 3;
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light));
+            color: var(--dark);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+        
+        .service-img {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+            background: var(--blush);
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--transition);
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.08);
+        }
+        
+        .service-body {
+            padding: 24px;
+        }
+        
+        .service-body h3 {
+            font-family: var(--font-serif);
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .service-body p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+        
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-price {
+            font-size: 18px;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold), var(--champagne));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .service-book {
+            padding: 8px 20px;
+            border: 1px solid var(--rose-gold);
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            text-decoration: none;
+            color: var(--rose-gold);
+            transition: all 0.3s ease;
+        }
+        
+        .service-book:hover {
+            background: var(--rose-gold);
+            color: white;
+        }
+        
+        @media (max-width: 1100px) {
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .section { padding: 80px 0; }
+            .container { padding: 0 20px; }
+        }
+        
+        /* Course Section */
+        .course-section {
+            background: linear-gradient(160deg, var(--dark-mid) 0%, var(--dark) 100%);
+        }
+        
+        .course-section .section-title,
+        .course-section .section-desc {
+            color: white;
+        }
+        
+        .course-section .section-desc {
+            color: rgba(255,255,255,0.45);
+        }
+        
+        .course-section .section-eyebrow {
+            color: var(--gold-light);
+        }
+        
+        .course-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .course-highlight-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,175,122,0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 48px;
+        }
+        
+        .course-highlight-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border: 1px solid rgba(232,201,122,0.3);
+            border-radius: 20px;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold-light);
+            margin-bottom: 24px;
+        }
+        
+        .course-heading {
+            font-family: var(--font-serif);
+            font-size: 36px;
+            font-weight: 300;
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .course-desc {
+            font-size: 14px;
+            color: rgba(255,255,255,0.55);
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+        
+        .course-stats {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        
+        .course-stat {
+            text-align: center;
+        }
+        
+        .stat-num {
+            display: block;
+            font-family: var(--font-serif);
+            font-size: 32px;
+            font-weight: 400;
+            color: var(--gold-light);
+        }
+        
+        .stat-label {
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.3);
+        }
+        
+        .course-stat-divider {
+            width: 1px;
+            height: 48px;
+            background: rgba(212,175,122,0.2);
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 32px;
+            position: relative;
+        }
+        
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(212,175,122,0.1);
+            border: 1px solid rgba(212,175,122,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--champagne);
+        }
+        
+        .timeline-content h4 {
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            margin-bottom: 4px;
+        }
+        
+        .timeline-content p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+        }
+        
+        @media (max-width: 1100px) {
+            .course-layout { grid-template-columns: 1fr; }
+        }
+        
+        /* Certificate */
+        .certificate-section {
+            background: var(--cream);
+        }
+        
+        .certificate-showcase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .certificate-frame {
+            position: relative;
+            max-width: 720px;
+            width: 100%;
+            margin-bottom: 32px;
+            transition: transform 0.4s ease;
+        }
+        
+        .certificate-frame:hover {
+            transform: perspective(800px) rotateY(5deg) rotateX(3deg);
+        }
+        
+        .cert-border-outer {
+            padding: 16px;
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light), var(--rose-gold));
+            border-radius: 20px;
+            box-shadow: 0 20px 60px var(--shadow-gold);
+        }
+        
+        .cert-border-inner {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 8px;
+        }
+        
+        .certificate-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        .cert-caption {
+            font-family: var(--font-serif);
+            font-size: 16px;
+            font-style: italic;
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        /* Gallery */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-filter {
+            padding: 8px 24px;
+            border: 1px solid rgba(212,175,122,0.3);
+            border-radius: 30px;
+            background: transparent;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-filter:hover,
+        .gallery-filter.active {
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light));
+            border-color: transparent;
+            color: var(--dark);
+        }
+        
+        .gallery-masonry {
+            columns: 3;
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-6px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-overlay i {
+            color: white;
+            font-size: 32px;
+        }
+        
+        .gallery-item.filtered-out {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-masonry { columns: 2; }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-masonry { columns: 1; }
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.95);
+            z-index: 99995;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .lightbox.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+        }
+        
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 12px;
+        }
+        
+        .lightbox-close,
+        .lightbox-prev,
+        .lightbox-next {
+            position: fixed;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox-close {
+            top: 24px;
+            right: 28px;
+        }
+        
+        .lightbox-prev {
+            left: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-next {
+            right: 28px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .lightbox-close:hover,
+        .lightbox-prev:hover,
+        .lightbox-next:hover {
+            background: rgba(212,175,122,0.3);
+        }
+        
+        /* Contact */
+        .contact-section {
+            background: var(--cream);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        
+        .contact-card {
+            display: flex;
+            gap: 20px;
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+        
+        .contact-card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(212,175,122,0.15), rgba(201,137,122,0.15));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--champagne);
+        }
+        
+        .contact-card-body h4 {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: var(--champagne);
+            margin-bottom: 8px;
+        }
+        
+        .contact-card-body p,
+        .contact-card-body a {
+            font-size: 14px;
+            color: var(--text-light);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        
+        .contact-card-body a:hover {
+            color: var(--rose-gold);
+        }
+        
+        .contact-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+        
+        .contact-social-btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            border: 1px solid;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-social-btn.insta {
+            color: #e1306c;
+            border-color: rgba(225,48,108,0.3);
+        }
+        
+        .contact-social-btn.insta:hover {
+            background: #e1306c;
+            color: white;
+        }
+        
+        .contact-social-btn.wa {
+            color: #25d366;
+            border-color: rgba(37,211,102,0.3);
+        }
+        
+        .contact-social-btn.wa:hover {
+            background: #25d366;
+            color: white;
+        }
+        
+        .contact-social-btn.yt {
+            color: #ff0000;
+            border-color: rgba(255,0,0,0.25);
+        }
+        
+        .contact-social-btn.yt:hover {
+            background: #ff0000;
+            color: white;
+        }
+        
+        .map-glass {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        }
+        
+        .map-glass iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid { grid-template-columns: 1fr; }
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            padding: 80px 0 0;
+        }
+        
+        .footer-top-inner {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-logo-script {
+            font-family: var(--font-script);
+            font-size: 32px;
+            background: linear-gradient(135deg, var(--champagne), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .footer-logo-serif {
+            font-size: 9px;
+            letter-spacing: 5px;
+            color: rgba(255,255,255,0.3);
+        }
+        
+        .footer-brand p {
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+        
+        .footer-socials {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .footer-socials a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(212,175,122,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-socials a:hover {
+            border-color: var(--champagne);
+            color: var(--champagne);
+            transform: translateY(-3px);
+        }
+        
+        .footer-nav h5 {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--champagne);
+            margin-bottom: 20px;
+        }
+        
+        .footer-nav a,
+        .footer-nav span {
+            display: block;
+            font-size: 13px;
+            color: rgba(255,255,255,0.35);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-nav a:hover {
+            color: rgba(255,255,255,0.6);
+            padding-left: 4px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 24px 0;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            font-size: 12px;
+            color: rgba(255,255,255,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .footer-top-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+        
+        /* Reveal Animation */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s var(--transition);
+        }
+        
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Magnetic */
+        .magnetic {
+            display: inline-flex;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-btns .btn-outline span { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Custom Cursor -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-ring" id="cursorRing"></div>
-
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Loading Screen -->
-    <div class="loader" id="loader">
-        <div class="loader-inner">
-            <div class="loader-logo">
-                <span class="loader-logo-script">Polish</span>
-                <span class="loader-logo-serif">PERFECT</span>
-            </div>
-            <div class="loader-bar-track">
-                <div class="loader-bar" id="loaderBar"></div>
-            </div>
-            <p class="loader-tagline">Crafting Luxury, One Nail at a Time</p>
+<!-- Loader -->
+<div class="loader" id="loader">
+    <div class="loader-inner">
+        <div class="loader-logo">
+            <span class="loader-logo-script">Polish</span>
+            <span class="loader-logo-serif">PERFECT</span>
         </div>
+        <div class="loader-bar-track">
+            <div class="loader-bar" id="loaderBar"></div>
+        </div>
+        <p class="loader-tagline">Luxury Nail Experience</p>
     </div>
+</div>
 
-    <!-- WhatsApp Float Button -->
-    <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20would%20like%20to%20book%20an%20appointment" class="whatsapp-float magnetic" target="_blank" aria-label="WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="wa-pulse"></span>
-    </a>
+<!-- Cursors -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <!-- Navbar -->
-    <header class="navbar" id="navbar">
-        <div class="nav-container">
-            <a href="#home" class="nav-logo">
-                <span class="nav-logo-script">Polish</span>
-                <span class="nav-logo-serif">PERFECT</span>
+<!-- Scroll Progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="whatsapp-float magnetic" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Navbar -->
+<header class="navbar" id="navbar">
+    <div class="nav-container">
+        <a href="#home" class="nav-logo">
+            <span class="nav-logo-script">Polish</span>
+            <span class="nav-logo-serif">PERFECT</span>
+        </a>
+        <nav class="nav-links" id="navLinks">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#course" class="nav-link">Academy</a>
+            <a href="#certificate" class="nav-link">Certificate</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#contact" class="nav-link">Contact</a>
+            <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="nav-book magnetic" target="_blank">Book Now</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-inner">
+        <a href="#home" class="mobile-nav-link">Home</a>
+        <a href="#services" class="mobile-nav-link">Services</a>
+        <a href="#course" class="mobile-nav-link">Academy</a>
+        <a href="#certificate" class="mobile-nav-link">Certificate</a>
+        <a href="#gallery" class="mobile-nav-link">Gallery</a>
+        <a href="#contact" class="mobile-nav-link">Contact</a>
+        <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="mobile-book" target="_blank"><i class="fab fa-whatsapp"></i> Book Appointment</a>
+    </div>
+</div>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-glow hero-glow-3"></div>
+
+    <div class="hero-content">
+        <div class="hero-founder-card reveal-up">
+            <div class="founder-avatar">KD</div>
+            <div>
+                <span class="founder-label">Founded by</span>
+                <span class="founder-name">Khushi Desai</span>
+            </div>
+        </div>
+        <h1 class="hero-title reveal-up">
+            Luxury Nail <em>Art Studio</em>
+        </h1>
+        <p class="hero-subtitle reveal-up">Professional Nail Care & Nail Art Academy</p>
+        <div class="hero-btns reveal-up">
+            <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20want%20to%20book%20an%20appointment" class="btn-luxury magnetic" target="_blank">
+                <span>Book Appointment</span>
+                <i class="fas fa-arrow-right"></i>
             </a>
-            <nav class="nav-links" id="navLinks">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#course" class="nav-link">Academy</a>
-                <a href="#certificate" class="nav-link">Certificate</a>
-                <a href="#gallery" class="nav-link">Gallery</a>
-                <a href="#contact" class="nav-link">Contact</a>
-                <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20would%20like%20to%20book%20an%20appointment" class="nav-book magnetic" target="_blank">Book Now</a>
-            </nav>
-            <button class="nav-toggle" id="navToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu" id="mobileMenu">
-        <div class="mobile-menu-inner">
-            <a href="#home" class="mobile-nav-link">Home</a>
-            <a href="#services" class="mobile-nav-link">Services</a>
-            <a href="#course" class="mobile-nav-link">Academy</a>
-            <a href="#certificate" class="mobile-nav-link">Certificate</a>
-            <a href="#gallery" class="mobile-nav-link">Gallery</a>
-            <a href="#contact" class="mobile-nav-link">Contact</a>
-            <a href="https://wa.me/918849960489" class="mobile-book" target="_blank"><i class="fab fa-whatsapp"></i> Book Appointment</a>
+            <a href="https://wa.me/918849960489" class="btn-outline magnetic" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://instagram.com/polish_perfect18" class="btn-outline magnetic" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
         </div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <canvas id="heroCanvas"></canvas>
-        <div class="hero-particles" id="heroParticles"></div>
-        <div class="hero-glow hero-glow-1"></div>
-        <div class="hero-glow hero-glow-2"></div>
-        <div class="hero-glow hero-glow-3"></div>
+    <div class="hero-3d-scene">
+        <canvas id="threeCanvas"></canvas>
+    </div>
 
-        <div class="hero-content">
-            <div class="hero-founder-card reveal-up">
-                <div class="founder-avatar">KD</div>
-                <div>
-                    <span class="founder-label">Founded by</span>
-                    <span class="founder-name">Khushi Desai</span>
+    <div class="hero-scroll-hint">
+        <div class="scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <span class="section-eyebrow">What We Offer</span>
+            <h2 class="section-title">Our <em>Services</em></h2>
+            <p class="section-desc">Premium nail care services tailored to perfection</p>
+        </div>
+        <div class="services-grid" id="servicesGrid">
+            <!-- Services will be populated via JavaScript -->
+        </div>
+    </div>
+</section>
+
+<!-- Course Section -->
+<section class="section course-section" id="course">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <span class="section-eyebrow">Polish Perfect Academy</span>
+            <h2 class="section-title">Nail Art <em>Course</em></h2>
+            <p class="section-desc">Become a certified nail art professional</p>
+        </div>
+        <div class="course-layout">
+            <div class="course-highlight-card reveal-up">
+                <div class="course-highlight-badge">Professional Certification</div>
+                <h3 class="course-heading">10 Day Nail Art Mastery</h3>
+                <p class="course-desc">Complete professional course covering all aspects of nail art and design. Master the complete art of beautiful nails.</p>
+                <div class="course-stats">
+                    <div class="course-stat">
+                        <span class="stat-num">10</span>
+                        <span class="stat-label">Days</span>
+                    </div>
+                    <div class="course-stat-divider"></div>
+                    <div class="course-stat">
+                        <span class="stat-num">₹8,888</span>
+                        <span class="stat-label">All Inclusive</span>
+                    </div>
+                    <div class="course-stat-divider"></div>
+                    <div class="course-stat">
+                        <span class="stat-num">100%</span>
+                        <span class="stat-label">Practical</span>
+                    </div>
                 </div>
-            </div>
-
-            <h1 class="hero-title">
-                <span class="hero-title-line reveal-up" style="--delay:0.1s">Luxury Nail</span>
-                <span class="hero-title-line hero-title-italic reveal-up" style="--delay:0.25s">Art Studio</span>
-            </h1>
-            <p class="hero-subtitle reveal-up" style="--delay:0.4s">Professional Nail Care &amp; Nail Art Academy</p>
-
-            <div class="hero-btns reveal-up" style="--delay:0.55s">
-                <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20would%20like%20to%20book%20an%20appointment" class="btn-luxury magnetic" target="_blank">
-                    <span>Book Appointment</span>
-                    <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="https://wa.me/918849960489" class="btn-outline magnetic" target="_blank">
+                <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20am%20interested%20in%20Nail%20Art%20Course" class="btn-luxury magnetic" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
-                <a href="https://instagram.com/polish_perfect18" class="btn-outline magnetic" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://youtube.com/@khushidesai3789" class="btn-outline magnetic" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
+                    <span>Enroll Now</span>
                 </a>
             </div>
-        </div>
-
-        <div class="hero-3d-scene" id="hero3d">
-            <canvas id="threeCanvas"></canvas>
-        </div>
-
-        <div class="hero-scroll-hint">
-            <div class="scroll-line"></div>
-            <span>Scroll</span>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="section services-section" id="services">
-        <div class="section-bg-ornament"></div>
-        <div class="container">
-            <div class="section-header reveal-up">
-                <span class="section-eyebrow">What We Offer</span>
-                <h2 class="section-title">Our <em>Services</em></h2>
-                <p class="section-desc">We offer a wide range of premium nail care services tailored to perfection</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card tilt-card reveal-up" style="--delay:0.05s">
-                    <div class="service-badge">Popular</div>
-                    <div class="service-img">
-                        <img src="image-lux.jpg" alt="Luxury Manicure" loading="lazy">
-                        <div class="service-img-shine"></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Luxury Manicure</h3>
-                        <p>Our luxury manicure includes nail shaping, cuticle care, massage, and your choice of polish.</p>
-                        <div class="service-footer">
-                            <span class="service-price">from ₹800</span>
-                            <a href="https://wa.me/918849960489?text=Hello%20I%20want%20to%20book%20Luxury%20Manicure" class="service-book" target="_blank">Book <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <div class="course-timeline reveal-up">
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-clock"></i></div>
+                    <div class="timeline-content">
+                        <h4>Duration</h4>
+                        <p>10 Days · 2 hours daily · Hands-on practical</p>
                     </div>
                 </div>
-
-                <div class="service-card tilt-card reveal-up" style="--delay:0.1s">
-                    <div class="service-badge">Best Seller</div>
-                    <div class="service-img">
-                        <img src="Signature-Pedicure.jpg" alt="Signature Pedicure" loading="lazy">
-                        <div class="service-img-shine"></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Signature Pedicure</h3>
-                        <p>Pamper your feet with our signature pedicure that includes exfoliation, massage, and polish.</p>
-                        <div class="service-footer">
-                            <span class="service-price">from ₹1200</span>
-                            <a href="https://wa.me/918849960489?text=Hello%20I%20want%20to%20book%20Signature%20Pedicure" class="service-book" target="_blank">Book <i class="fas fa-arrow-right"></i></a>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-paint-brush"></i></div>
+                    <div class="timeline-content">
+                        <h4>Nail Preparation & Shaping</h4>
+                        <p>Professional techniques for perfect nail prep</p>
                     </div>
                 </div>
-
-                <div class="service-card tilt-card reveal-up" style="--delay:0.15s">
-                    <div class="service-img">
-                        <img src="nail-1.jpg" alt="Nail Art Design" loading="lazy">
-                        <div class="service-img-shine"></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Nail Art Design</h3>
-                        <p>Express your style with our custom nail art designs created by our talented artists.</p>
-                        <div class="service-footer">
-                            <span class="service-price">from ₹500</span>
-                            <a href="https://wa.me/918849960489?text=Hello%20I%20want%20to%20book%20Nail%20Art%20Design" class="service-book" target="_blank">Book <i class="fas fa-arrow-right"></i></a>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-gem"></i></div>
+                    <div class="timeline-content">
+                        <h4>Gel & Acrylic Application</h4>
+                        <p>Master professional gel and acrylic application</p>
                     </div>
                 </div>
-
-                <div class="service-card tilt-card reveal-up" style="--delay:0.2s">
-                    <div class="service-badge">New</div>
-                    <div class="service-img">
-                        <img src="gel-image2.jpg" alt="Gel Nails" loading="lazy">
-                        <div class="service-img-shine"></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Gel Nails</h3>
-                        <p>Long-lasting gel nails with a brilliant shine that stays perfect for weeks.</p>
-                        <div class="service-footer">
-                            <span class="service-price">from ₹1500</span>
-                            <a href="https://wa.me/918849960489?text=Hello%20I%20want%20to%20book%20Gel%20Nails" class="service-book" target="_blank">Book <i class="fas fa-arrow-right"></i></a>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-star"></i></div>
+                    <div class="timeline-content">
+                        <h4>3D Art & Embellishments</h4>
+                        <p>Advanced 3D nail art with luxury embellishments</p>
                     </div>
                 </div>
-
-                <div class="service-card tilt-card reveal-up" style="--delay:0.25s">
-                    <div class="service-img">
-                        <img src="Acrylic-Nails.jpg" alt="Acrylic Nails" loading="lazy">
-                        <div class="service-img-shine"></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Acrylic Nails</h3>
-                        <p>Strong and durable acrylic nails with customizable length and shape.</p>
-                        <div class="service-footer">
-                            <span class="service-price">from ₹1800</span>
-                            <a href="https://wa.me/918849960489?text=Hello%20I%20want%20to%20book%20Acrylic%20Nails" class="service-book" target="_blank">Book <i class="fas fa-arrow-right"></i></a>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="timeline-content">
+                        <h4>Nail Health & Safety</h4>
+                        <p>Safety practices and hygiene protocols</p>
                     </div>
                 </div>
-
-                <div class="service-card tilt-card reveal-up" style="--delay:0.3s">
-                    <div class="service-badge">Premium</div>
-                    <div class="service-img">
-                        <img src="Nail-Repair.jpg" alt="Nail Repair" loading="lazy">
-                        <div class="service-img-shine"></div>
-                    </div>
-                    <div class="service-body">
-                        <h3>Nail Repair</h3>
-                        <p>Professional nail repair services for damaged or broken nails.</p>
-                        <div class="service-footer">
-                            <span class="service-price">from ₹1000</span>
-                            <a href="https://wa.me/918849960489?text=Hello%20I%20want%20to%20book%20Nail%20Repair" class="service-book" target="_blank">Book <i class="fas fa-arrow-right"></i></a>
-                        </div>
+                <div class="timeline-item">
+                    <div class="timeline-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="timeline-content">
+                        <h4>Certification & Business</h4>
+                        <p>Industry-recognized certificate + business guidance</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Nail Art Course Section -->
-    <section class="section course-section" id="course">
-        <div class="container">
-            <div class="section-header reveal-up">
-                <span class="section-eyebrow">Polish Perfect Academy</span>
-                <h2 class="section-title">Nail Art <em>Course</em></h2>
-                <p class="section-desc">Become a certified nail art professional with our 10-day intensive program</p>
-            </div>
-
-            <div class="course-layout">
-                <div class="course-info reveal-up">
-                    <div class="course-highlight-card">
-                        <div class="course-highlight-badge">Professional Certification</div>
-                        <h3 class="course-heading">10 Day Nail Art Mastery</h3>
-                        <p class="course-desc">Our intensive course covers all aspects of nail art and design. Whether you're a beginner or looking to elevate your skills, master the complete art of beautiful nails.</p>
-
-                        <div class="course-stats">
-                            <div class="course-stat">
-                                <span class="stat-num">10</span>
-                                <span class="stat-label">Days</span>
-                            </div>
-                            <div class="course-stat-divider"></div>
-                            <div class="course-stat">
-                                <span class="stat-num">₹8,888</span>
-                                <span class="stat-label">All Inclusive</span>
-                            </div>
-                            <div class="course-stat-divider"></div>
-                            <div class="course-stat">
-                                <span class="stat-num">100%</span>
-                                <span class="stat-label">Practical</span>
-                            </div>
-                        </div>
-
-                        <a href="https://wa.me/918849960489?text=Hello%20Polish%20Perfect,%20I%20am%20interested%20in%20Nail%20Art%20Course" class="btn-luxury magnetic" target="_blank">
-                            <i class="fab fa-whatsapp"></i>
-                            <span>Enroll Now</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="course-timeline reveal-up" style="--delay:0.2s">
-                    <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fas fa-clock"></i></div>
-                        <div class="timeline-content">
-                            <h4>Duration</h4>
-                            <p>10 Days · 2 hours daily · Hands-on practical</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fas fa-paint-brush"></i></div>
-                        <div class="timeline-content">
-                            <h4>Nail Preparation & Shaping</h4>
-                            <p>Professional techniques for perfect nail prep and shaping</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fas fa-gem"></i></div>
-                        <div class="timeline-content">
-                            <h4>Gel & Acrylic Application</h4>
-                            <p>Master professional gel and acrylic nail application</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fas fa-star"></i></div>
-                        <div class="timeline-content">
-                            <h4>3D Art & Embellishments</h4>
-                            <p>Advanced 3D nail art with luxury embellishments</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="timeline-content">
-                            <h4>Nail Health & Safety</h4>
-                            <p>Nail health, safety practices, and hygiene protocols</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-icon"><i class="fas fa-user-graduate"></i></div>
-                        <div class="timeline-content">
-                            <h4>Certification & Business</h4>
-                            <p>Industry-recognized certificate + business setup guidance</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certificate Section -->
-    <section class="section certificate-section" id="certificate">
-        <div class="container">
-            <div class="section-header reveal-up">
-                <span class="section-eyebrow">Accreditation</span>
-                <h2 class="section-title">Our <em>Certification</em></h2>
-                <p class="section-desc">Professional accreditation and industry recognition</p>
-            </div>
-            <div class="certificate-showcase reveal-up">
-                <div class="certificate-frame">
-                    <div class="certificate-glow"></div>
-                    <div class="cert-border-outer">
-                        <div class="cert-border-inner">
-                            <img src="certificate-k.jpg" alt="Polish Perfect Certificate" class="certificate-img" loading="lazy">
-                        </div>
-                    </div>
-                    <div class="cert-corner cert-corner-tl"></div>
-                    <div class="cert-corner cert-corner-tr"></div>
-                    <div class="cert-corner cert-corner-bl"></div>
-                    <div class="cert-corner cert-corner-br"></div>
-                </div>
-                <p class="cert-caption">We are proud to be a certified nail salon with industry-recognized accreditation</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="section gallery-section" id="gallery">
-        <div class="container">
-            <div class="section-header reveal-up">
-                <span class="section-eyebrow">Our Work</span>
-                <h2 class="section-title">Gallery</h2>
-                <p class="section-desc">Check out our amazing nail art creations</p>
-            </div>
-
-            <div class="gallery-filters reveal-up">
-                <button class="gallery-filter active" data-filter="all">All</button>
-                <button class="gallery-filter" data-filter="gel">Gel</button>
-                <button class="gallery-filter" data-filter="acrylic">Acrylic</button>
-                <button class="gallery-filter" data-filter="luxury">Luxury</button>
-                <button class="gallery-filter" data-filter="bridal">Bridal</button>
-            </div>
-
-            <div class="gallery-masonry" id="galleryGrid">
-                <div class="gallery-item reveal-up" data-category="luxury" style="--delay:0.05s">
-                    <img src="image-1.jpg" alt="Nail Art 1" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="gel" style="--delay:0.1s">
-                    <img src="image-2.jpg" alt="Nail Art 2" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="acrylic" style="--delay:0.15s">
-                    <img src="image-3.jpg" alt="Nail Art 3" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="bridal" style="--delay:0.2s">
-                    <img src="image-4.jpg" alt="Nail Art 4" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="gel" style="--delay:0.25s">
-                    <img src="image-5.jpg" alt="Nail Art 5" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="luxury" style="--delay:0.3s">
-                    <img src="image-6.jpg" alt="Nail Art 6" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="acrylic" style="--delay:0.35s">
-                    <img src="image-7.jpg" alt="Nail Art 7" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="bridal" style="--delay:0.4s">
-                    <img src="image-8(2).jpg" alt="Nail Art 8" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-                <div class="gallery-item reveal-up" data-category="luxury" style="--delay:0.45s">
-                    <img src="image-9.jpg" alt="Nail Art 9" loading="lazy">
-                    <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
-        <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
-        <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
-        <div class="lightbox-content">
-            <img src="" alt="" id="lightboxImg">
         </div>
     </div>
+</section>
 
-    <!-- Contact Section -->
-    <section class="section contact-section" id="contact">
-        <div class="container">
-            <div class="section-header reveal-up">
-                <span class="section-eyebrow">Reach Us</span>
-                <h2 class="section-title">Contact <em>Us</em></h2>
-                <p class="section-desc">Get in touch for appointments or any inquiries</p>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-cards reveal-up">
-                    <div class="contact-card">
-                        <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <div class="contact-card-body">
-                            <h4>Address</h4>
-                            <p>205, Opera Business Hub, Lajamani Chowk, Mota Varachha, Surat, Gujarat</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
-                        <div class="contact-card-body">
-                            <h4>Phone</h4>
-                            <p><a href="tel:+918849960489">+91 8849960489</a></p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <div class="contact-card-icon"><i class="fas fa-clock"></i></div>
-                        <div class="contact-card-body">
-                            <h4>Working Hours</h4>
-                            <p>Mon–Sat: 10 AM – 8 PM<br>Sun: 11 AM – 5 PM</p>
-                        </div>
-                    </div>
-                    <div class="contact-social">
-                        <a href="https://instagram.com/polish_perfect18" class="contact-social-btn insta" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-                        <a href="https://wa.me/918849960489" class="contact-social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        <a href="https://youtube.com/@khushidesai3789" class="contact-social-btn yt" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+<!-- Certificate Section -->
+<section class="section certificate-section" id="certificate">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <span class="section-eyebrow">Accreditation</span>
+            <h2 class="section-title">Our <em>Certification</em></h2>
+            <p class="section-desc">Professional accreditation and industry recognition</p>
+        </div>
+        <div class="certificate-showcase reveal-up">
+            <div class="certificate-frame" id="certFrame">
+                <div class="cert-border-outer">
+                    <div class="cert-border-inner">
+                        <img src="certificate-k.jpg" alt="Polish Perfect Certificate" class="certificate-img" onerror="this.src='https://placehold.co/600x400/f5f0e8/d4af7a?text=Certificate+Sample'">
                     </div>
                 </div>
+            </div>
+            <p class="cert-caption">Industry recognized certificate upon course completion</p>
+        </div>
+    </div>
+</section>
 
-                <div class="contact-map-wrap reveal-up" style="--delay:0.2s">
-                    <div class="map-glass">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.238165411898!2d72.8673143759963!3d21.22131648068711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f3e7c5df2ef%3A0x4f5f7b3e8e1e1e1e!2sOpera%20Business%20Hub%2C%20Lajamani%20Chowk%2C%20Mota%20Varachha%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1684838997890!5m2!1sen!2sin" allowfullscreen="" loading="lazy" title="Polish Perfect Location"></iframe>
+<!-- Gallery Section -->
+<section class="section" id="gallery">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <span class="section-eyebrow">Our Work</span>
+            <h2 class="section-title">Gallery</h2>
+            <p class="section-desc">Check out our amazing nail art creations</p>
+        </div>
+        <div class="gallery-filters reveal-up">
+            <button class="gallery-filter active" data-filter="all">All</button>
+            <button class="gallery-filter" data-filter="gel">Gel</button>
+            <button class="gallery-filter" data-filter="acrylic">Acrylic</button>
+            <button class="gallery-filter" data-filter="luxury">Luxury</button>
+            <button class="gallery-filter" data-filter="bridal">Bridal</button>
+        </div>
+        <div class="gallery-masonry" id="galleryGrid"></div>
+    </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose"><i class="fas fa-times"></i></button>
+    <button class="lightbox-prev" id="lightboxPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-next" id="lightboxNext"><i class="fas fa-chevron-right"></i></button>
+    <div class="lightbox-content">
+        <img src="" alt="" id="lightboxImg">
+    </div>
+</div>
+
+<!-- Contact Section -->
+<section class="section contact-section" id="contact">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <span class="section-eyebrow">Reach Us</span>
+            <h2 class="section-title">Contact <em>Us</em></h2>
+            <p class="section-desc">Get in touch for appointments or inquiries</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-cards reveal-up">
+                <div class="contact-card">
+                    <div class="contact-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-card-body">
+                        <h4>Address</h4>
+                        <p>205, Opera Business Hub, Lajamani Chowk, Mota Varachha, Surat, Gujarat</p>
                     </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-card-body">
+                        <h4>Phone</h4>
+                        <p><a href="tel:+918849960489">+91 8849960489</a></p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-card-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-card-body">
+                        <h4>Working Hours</h4>
+                        <p>Mon–Sat: 10 AM – 8 PM<br>Sun: 11 AM – 5 PM</p>
+                    </div>
+                </div>
+                <div class="contact-social">
+                    <a href="https://instagram.com/polish_perfect18" class="contact-social-btn insta" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                    <a href="https://wa.me/918849960489" class="contact-social-btn wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://youtube.com/@khushidesai3789" class="contact-social-btn yt" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
+                </div>
+            </div>
+            <div class="contact-map-wrap reveal-up">
+                <div class="map-glass">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3719.238165411898!2d72.8673143759963!3d21.22131648068711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04f3e7c5df2ef%3A0x4f5f7b3e8e1e1e1e!2sOpera%20Business%20Hub%2C%20Lajamani%20Chowk%2C%20Mota%20Varachha%2C%20Surat%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1684838997890!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-top">
-            <div class="container footer-top-inner">
-                <div class="footer-brand">
-                    <div class="footer-logo">
-                        <span class="footer-logo-script">Polish</span>
-                        <span class="footer-logo-serif">PERFECT</span>
-                    </div>
-                    <p>Professional nail care and nail art training studio — crafting luxury, one nail at a time.</p>
-                    <div class="footer-socials">
-                        <a href="https://instagram.com/polish_perfect18" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/918849960489" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://youtube.com/@khushidesai3789" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-                    </div>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-top-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <span class="footer-logo-script">Polish</span>
+                    <span class="footer-logo-serif">PERFECT</span>
                 </div>
-                <div class="footer-nav">
-                    <h5>Navigation</h5>
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#course">Academy</a>
-                    <a href="#certificate">Certificate</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#contact">Contact</a>
+                <p>Professional nail care and nail art training studio — crafting luxury, one nail at a time.</p>
+                <div class="footer-socials">
+                    <a href="https://instagram.com/polish_perfect18" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/918849960489" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://youtube.com/@khushidesai3789" target="_blank"><i class="fab fa-youtube"></i></a>
                 </div>
-                <div class="footer-nav">
-                    <h5>Services</h5>
-                    <a href="#services">Luxury Manicure</a>
-                    <a href="#services">Signature Pedicure</a>
-                    <a href="#services">Nail Art Design</a>
-                    <a href="#services">Gel Nails</a>
-                    <a href="#services">Acrylic Nails</a>
-                    <a href="#services">Nail Repair</a>
-                </div>
-                <div class="footer-nav">
-                    <h5>Contact</h5>
-                    <a href="tel:+918849960489">+91 8849960489</a>
-                    <span>205, Opera Business Hub</span>
-                    <span>Lajamani Chowk, Mota Varachha</span>
-                    <span>Surat, Gujarat</span>
-                </div>
+            </div>
+            <div class="footer-nav">
+                <h5>Navigation</h5>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#course">Academy</a>
+                <a href="#certificate">Certificate</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-nav">
+                <h5>Services</h5>
+                <a href="#services">Luxury Manicure</a>
+                <a href="#services">Signature Pedicure</a>
+                <a href="#services">Nail Art Design</a>
+                <a href="#services">Gel Nails</a>
+                <a href="#services">Acrylic Nails</a>
+                <a href="#services">Nail Repair</a>
+            </div>
+            <div class="footer-nav">
+                <h5>Contact</h5>
+                <a href="tel:+918849960489">+91 8849960489</a>
+                <span>205, Opera Business Hub</span>
+                <span>Lajamani Chowk, Mota Varachha</span>
+                <span>Surat, Gujarat</span>
             </div>
         </div>
         <div class="footer-bottom">
-            <div class="container footer-bottom-inner">
-                <p>&copy; 2025 Polish Perfect. All Rights Reserved.</p>
-                <p>Designed with <i class="fas fa-heart"></i> by Khushi Desai</p>
-            </div>
+            <p>&copy; 2025 Polish Perfect. All Rights Reserved. Designed by Khushi Desai</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-    <script src="script.js"></script>
+<script type="module">
+    // Three.js 3D Nail Polish Bottle
+    import * as THREE from 'three';
+    
+    const canvas = document.getElementById('threeCanvas');
+    if (canvas) {
+        const scene = new THREE.Scene();
+        scene.background = null;
+        
+        const camera = new THREE.PerspectiveCamera(45, canvas.parentElement.clientWidth / canvas.parentElement.clientHeight, 0.1, 100);
+        camera.position.set(0, 0, 5);
+        
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        
+        function resizeCanvas() {
+            const width = canvas.parentElement.clientWidth;
+            const height = canvas.parentElement.clientHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        
+        const mainLight = new THREE.DirectionalLight(0xfff5e0, 1);
+        mainLight.position.set(2, 3, 4);
+        scene.add(mainLight);
+        
+        const backLight = new THREE.PointLight(0xd4af7a, 0.5);
+        backLight.position.set(0, 1, -2);
+        scene.add(backLight);
+        
+        const fillLight = new THREE.PointLight(0xc9897a, 0.4);
+        fillLight.position.set(-2, 1, 2);
+        scene.add(fillLight);
+        
+        // Bottle Group
+        const bottleGroup = new THREE.Group();
+        scene.add(bottleGroup);
+        
+        // Glass Body
+        const bodyGeo = new THREE.CylinderGeometry(0.55, 0.65, 2.2, 64, 64);
+        const glassMat = new THREE.MeshPhysicalMaterial({
+            color: 0xff9bae,
+            metalness: 0.9,
+            roughness: 0.1,
+            transparent: true,
+            opacity: 0.75,
+            clearcoat: 1,
+            clearcoatRoughness: 0.05
+        });
+        const body = new THREE.Mesh(bodyGeo, glassMat);
+        body.castShadow = true;
+        bottleGroup.add(body);
+        
+        // Liquid
+        const liquidGeo = new THREE.CylinderGeometry(0.52, 0.6, 1.6, 64);
+        const liquidMat = new THREE.MeshPhysicalMaterial({
+            color: 0xe8c97a,
+            emissive: 0x442200,
+            metalness: 0.2,
+            roughness: 0.3,
+            transparent: true,
+            opacity: 0.85
+        });
+        const liquid = new THREE.Mesh(liquidGeo, liquidMat);
+        liquid.position.y = -0.2;
+        bottleGroup.add(liquid);
+        
+        // Cap
+        const capGeo = new THREE.CylinderGeometry(0.58, 0.62, 0.5, 64);
+        const capMat = new THREE.MeshStandardMaterial({ color: 0xd4af7a, metalness: 0.95, roughness: 0.1 });
+        const cap = new THREE.Mesh(capGeo, capMat);
+        cap.position.y = 1.25;
+        bottleGroup.add(cap);
+        
+        // Cap Top
+        const topGeo = new THREE.SphereGeometry(0.58, 32, 32, 0, Math.PI * 2, 0, Math.PI / 2);
+        const topMat = new THREE.MeshStandardMaterial({ color: 0xd4af7a, metalness: 0.95, roughness: 0.05 });
+        const top = new THREE.Mesh(topGeo, topMat);
+        top.position.y = 1.5;
+        bottleGroup.add(top);
+        
+        // Mouse interaction
+        let mouseX = 0, mouseY = 0;
+        let targetRotX = 0, targetRotY = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+            mouseY = (e.clientY / window.innerHeight) * 2 - 1;
+            targetRotY = mouseX * 0.3;
+            targetRotX = mouseY * 0.15;
+        });
+        
+        let currentRotX = 0, currentRotY = 0;
+        let time = 0;
+        
+        function animate() {
+            requestAnimationFrame(animate);
+            time += 0.01;
+            
+            // Smooth rotation
+            currentRotX += (targetRotX - currentRotX) * 0.05;
+            currentRotY += (targetRotY - currentRotY) * 0.05;
+            
+            bottleGroup.rotation.x = currentRotX;
+            bottleGroup.rotation.y = currentRotY + Math.sin(time) * 0.1;
+            bottleGroup.position.y = Math.sin(time * 0.8) * 0.05;
+            
+            renderer.render(scene, camera);
+        }
+        animate();
+    }
+    
+    // Hero Canvas Particles
+    const heroCanvas = document.getElementById('heroCanvas');
+    if (heroCanvas) {
+        const ctx = heroCanvas.getContext('2d');
+        let width, height;
+        let particles = [];
+        
+        function resizeHero() {
+            width = heroCanvas.parentElement.clientWidth;
+            height = heroCanvas.parentElement.clientHeight;
+            heroCanvas.width = width;
+            heroCanvas.height = height;
+        }
+        resizeHero();
+        window.addEventListener('resize', resizeHero);
+        
+        for (let i = 0; i < 100; i++) {
+            particles.push({
+                x: Math.random() * width,
+                y: Math.random() * height,
+                radius: Math.random() * 2 + 1,
+                alpha: Math.random() * 0.3 + 0.1,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
+        
+        function drawHero() {
+            ctx.clearRect(0, 0, width, height);
+            
+            particles.forEach(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0) p.x = width;
+                if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height;
+                if (p.y > height) p.y = 0;
+                
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 175, 122, ${p.alpha})`;
+                ctx.fill();
+            });
+            
+            requestAnimationFrame(drawHero);
+        }
+        drawHero();
+    }
+</script>
+
+<script>
+    // Loader
+    const loader = document.getElementById('loader');
+    const loaderBar = document.getElementById('loaderBar');
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 15 + 5;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            loaderBar.style.width = '100%';
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 500);
+        }
+        loaderBar.style.width = Math.min(progress, 100) + '%';
+    }, 100);
+    
+    // Custom Cursor
+    const cursorDot = document.getElementById('cursorDot');
+    const cursorRing = document.getElementById('cursorRing');
+    if (cursorDot && cursorRing) {
+        let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+        let ringX = mouseX, ringY = mouseY;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
+        });
+        
+        function animateRing() {
+            ringX += (mouseX - ringX) * 0.15;
+            ringY += (mouseY - ringY) * 0.15;
+            cursorRing.style.left = ringX + 'px';
+            cursorRing.style.top = ringY + 'px';
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+        
+        document.querySelectorAll('a, button, .service-card, .gallery-item').forEach(el => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+        });
+    }
+    
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (scrollTop / scrollHeight) * 100;
+        document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+    
+    // Navbar
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+    
+    // Mobile Menu
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (navToggle && mobileMenu) {
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+        });
+        mobileMenu.querySelectorAll('.mobile-nav-link, .mobile-book').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                mobileMenu.classList.remove('open');
+            });
+        });
+    }
+    
+    // Active Nav Links
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+    
+    // Services Data
+    const services = [
+        { name: 'Luxury Manicure', desc: 'Our luxury manicure includes nail shaping, cuticle care, massage, and polish.', price: '₹800', badge: 'Popular', img: 'image-lux.jpg' },
+        { name: 'Signature Pedicure', desc: 'Pamper your feet with exfoliation, massage, and polish.', price: '₹1200', badge: 'Best Seller', img: 'Signature-Pedicure.jpg' },
+        { name: 'Nail Art Design', desc: 'Express your style with our custom nail art designs.', price: '₹500', badge: '', img: 'nail-1.jpg' },
+        { name: 'Gel Nails', desc: 'Long-lasting gel nails with a brilliant shine.', price: '₹1500', badge: 'New', img: 'gel-image2.jpg' },
+        { name: 'Acrylic Nails', desc: 'Strong and durable acrylic nails.', price: '₹1800', badge: '', img: 'Acrylic-Nails.jpg' },
+        { name: 'Nail Repair', desc: 'Professional repair for damaged or broken nails.', price: '₹1000', badge: 'Premium', img: 'Nail-Repair.jpg' }
+    ];
+    
+    const servicesGrid = document.getElementById('servicesGrid');
+    if (servicesGrid) {
+        servicesGrid.innerHTML = services.map(service => `
+            <div class="service-card magnetic">
+                ${service.badge ? `<div class="service-badge">${service.badge}</div>` : ''}
+                <div class="service-img">
+                    <img src="${service.img}" alt="${service.name}" onerror="this.src='https://placehold.co/400x300/f5f0e8/d4af7a?text=${service.name}'">
+                </div>
+                <div class="service-body">
+                    <h3>${service.name}</h3>
+                    <p>${service.desc}</p>
+                    <div class="service-footer">
+                        <span class="service-price">${service.price}</span>
+                        <a href="https://wa.me/918849960489?text=Hello%20I%20want%20to%20book%20${service.name}" class="service-book" target="_blank">Book <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // Gallery Data with existing images
+    const galleryItems = [
+        { img: 'image-1.jpg', cat: 'luxury' },
+        { img: 'image-2.jpg', cat: 'gel' },
+        { img: 'image-3.jpg', cat: 'acrylic' },
+        { img: 'image-4.jpg', cat: 'bridal' },
+        { img: 'image-5.jpg', cat: 'gel' },
+        { img: 'image-6.jpg', cat: 'luxury' },
+        { img: 'image-7.jpg', cat: 'acrylic' },
+        { img: 'image-8(2).jpg', cat: 'bridal' },
+        { img: 'image-9.jpg', cat: 'luxury' }
+    ];
+    
+    const galleryGrid = document.getElementById('galleryGrid');
+    let currentGalleryItems = [...galleryItems];
+    
+    function renderGallery(filter = 'all') {
+        if (!galleryGrid) return;
+        const filtered = filter === 'all' ? galleryItems : galleryItems.filter(item => item.cat === filter);
+        galleryGrid.innerHTML = filtered.map((item, idx) => `
+            <div class="gallery-item" data-category="${item.cat}" data-index="${idx}">
+                <img src="${item.img}" alt="Nail Art" loading="lazy" onerror="this.src='https://placehold.co/400x400/f5f0e8/d4af7a?text=Nail+Art'">
+                <div class="gallery-overlay"><i class="fas fa-expand-alt"></i></div>
+            </div>
+        `).join('');
+        attachGalleryEvents();
+    }
+    
+    function attachGalleryEvents() {
+        const items = document.querySelectorAll('.gallery-item');
+        items.forEach((item, idx) => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img').src;
+                document.getElementById('lightboxImg').src = img;
+                document.getElementById('lightbox').classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+    }
+    
+    renderGallery();
+    
+    // Gallery Filters
+    const filters = document.querySelectorAll('.gallery-filter');
+    filters.forEach(filter => {
+        filter.addEventListener('click', () => {
+            filters.forEach(f => f.classList.remove('active'));
+            filter.classList.add('active');
+            renderGallery(filter.dataset.filter);
+        });
+    });
+    
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    const lightboxImg = document.getElementById('lightboxImg');
+    
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', () => {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
+    // GSAP Reveal Animations
+    if (typeof gsap !== 'undefined') {
+        gsap.registerPlugin(ScrollTrigger);
+        
+        document.querySelectorAll('.reveal-up').forEach(el => {
+            gsap.fromTo(el, 
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    scrollTrigger: {
+                        trigger: el,
+                        start: 'top 85%',
+                        end: 'bottom 60%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            );
+        });
+        
+        // Certificate 3D effect
+        const certFrame = document.getElementById('certFrame');
+        if (certFrame) {
+            certFrame.addEventListener('mousemove', (e) => {
+                const rect = certFrame.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                certFrame.style.transform = `perspective(800px) rotateY(${x * 10}deg) rotateX(${-y * 8}deg)`;
+            });
+            certFrame.addEventListener('mouseleave', () => {
+                certFrame.style.transform = 'perspective(800px) rotateY(0) rotateX(0)';
+            });
+        }
+    }
+    
+    // Magnetic Buttons
+    document.querySelectorAll('.magnetic').forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+    
+    // Smooth Scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#') return;
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
